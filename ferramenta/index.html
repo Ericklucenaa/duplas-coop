@@ -652,6 +652,14 @@ function el(tag, classe, texto) {
 
 const VERSAO_COR = { BPR: '#B8382A', BPG: '#387F33', BPE: '#157A60', AXV: '#9C2238', AXP: '#2A579B' };
 const corDe = (codigo) => VERSAO_COR[(codigo || '').slice(0, 3)] || '#6B6F76';
+// região do cartucho pela última letra do código (BPRE: E = EUA), no idioma da tela
+const REGIAO = {
+  E: { en: 'USA', pt: 'EUA', es: 'EE. UU.' }, P: { en: 'Europe (English)', pt: 'Europa (inglês)', es: 'Europa (inglés)' },
+  J: { en: 'Japan', pt: 'Japão', es: 'Japón' }, F: { en: 'France', pt: 'França', es: 'Francia' },
+  D: { en: 'Germany', pt: 'Alemanha', es: 'Alemania' }, I: { en: 'Italy', pt: 'Itália', es: 'Italia' },
+  S: { en: 'Spain', pt: 'Espanha', es: 'España' },
+};
+const regiao = (codigo, padrao) => { const r = REGIAO[(codigo || '')[3]]; return r ? r[lang] : (padrao || ''); };
 
 // ---------------------------------------------------------------- idioma
 async function trocarIdioma(novo, focar) {
@@ -719,7 +727,7 @@ function pintarEtiqueta(titulo, detalhe, carregado, cor, sobre) {
 const etiquetaVazia = () => pintarEtiqueta(t('soltar'), t('ou_clique'), false);
 function pintarRom() {
   const c = atual.cabecalho;
-  pintarEtiqueta(c.jogo || c.titulo, t('ficha_rom', { c: c.codigo, r: c.revisao, l: c.idioma, m: c.tamanho_mb }), true,
+  pintarEtiqueta(c.jogo || c.titulo, t('ficha_rom', { c: c.codigo, r: c.revisao, l: regiao(c.codigo, c.idioma), m: c.tamanho_mb }), true,
     corDe(c.codigo), c.jogo ? 'Pokémon' : '');
 }
 
@@ -858,7 +866,8 @@ function mostrarFicha(p) {
   $('pac-nome').textContent = p.nome;
   const info = $('pac-info');
   info.replaceChildren();
-  const jogo = p.jogo ? t('base_jogo', { j: p.jogo, l: p.idioma ? ' (' + p.idioma + ')' : '' }) : '';
+  const reg = regiao(p.codigo, p.idioma);
+  const jogo = p.jogo ? t('base_jogo', { j: p.jogo, l: reg ? ' (' + reg + ')' : '' }) : '';
   info.append(jogo + (p.tem_save ? t('com_save') : t('sem_save_pac')), el('code', '', p.pasta || ''));
   mostrarVelocidade(p.velocidade || 3);
   mostrarTeste(p.teste);
