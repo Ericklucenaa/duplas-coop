@@ -58,7 +58,7 @@ GAME FREAK inc.; this is a fan project, not affiliated with them.
 - `ferramenta/` — the app (Python, local web page; `Duplas.exe` is built with PyInstaller from `build-app/Duplas.spec`).
 - `src/` — the co-op mode (Lua scripts for mGBA on top of GBA-PK).
 - `tests/` — unit tests (`python -m pytest tests/unit`) and the two-emulator scenarios used by the compatibility test.
-- `publicar.ps1 -Versao 0.1.1 -Notas "..."` (0.x versions are published as beta pre-releases) — builds the release zip and publishes it on GitHub (needs `gh`, Python with
+- `publicar.ps1 -Versao 0.1.1 -Notas "..."` (0.x versions are published with "beta" in the title) — builds the release zip and publishes it on GitHub (needs `gh`, Python with
   PyInstaller, and the mGBA development build in `tools/mgba-dev`).
 
 ---

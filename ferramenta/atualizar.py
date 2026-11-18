@@ -45,7 +45,9 @@ def versao_atual(raiz: Path = ROOT) -> str:
 
 
 def _numeros(versao: str) -> tuple:
-    return tuple(int(n) for n in re.findall(r'\d+', versao)[:3]) or (0,)
+    """(maior, menor, correção): "0.1" vale o mesmo que "0.1.0", e "0.1.1" é mais nova que os dois."""
+    numeros = [int(n) for n in re.findall(r'\d+', versao)[:3]]
+    return tuple(numeros + [0] * (3 - len(numeros)))
 
 
 def mais_nova(a: str, b: str) -> bool:

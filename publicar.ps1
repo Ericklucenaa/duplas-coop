@@ -2,11 +2,11 @@
 # Quem já tem o Duplas recebe a pergunta "Deseja atualizar?" na próxima vez que abrir o app.
 #
 # Uso:  powershell -ExecutionPolicy Bypass -File publicar.ps1 -Versao 0.1.1 -Notas "O que mudou nesta versão"
-#       Versões 0.x.y saem como beta (pré-lançamento no GitHub); a partir de 1.0.0, como versão estável.
+#       Versões 0.x saem com "(beta)" no título; todas saem como a release mais recente (Latest) do GitHub.
 #       -SoMontar   monta o zip em release\ sem publicar nada (para conferir antes)
 # Precisa: gh (logado), Python com pyinstaller, pywebview e lupa, e o mGBA de desenvolvimento em tools\mgba-dev.
 param(
-  [Parameter(Mandatory)][ValidatePattern('^\d+\.\d+\.\d+$')][string]$Versao,
+  [Parameter(Mandatory)][ValidatePattern('^\d+\.\d+(\.\d+)?$')][string]$Versao,
   [string]$Notas = '',
   [switch]$SoMontar
 )
@@ -87,10 +87,10 @@ if (-not $Notas) { $Notas = "Duplas $Versao" }
 # as notas vão por arquivo: o PowerShell 5.1 repassa mal ao gh um texto de várias linhas que começam com "-"
 $arquivoNotas = Join-Path $saida 'notas.md'
 [IO.File]::WriteAllText($arquivoNotas, $Notas, (New-Object System.Text.UTF8Encoding($false)))
-# enquanto a versão começar com 0 (0.x.y) o projeto está em beta: a release sai marcada como pré-lançamento
+# enquanto a versão começar com 0 (0.x) o projeto está em beta: o título diz isso. A release sai como Latest (não como
+# pré-lançamento), senão o GitHub diz que o projeto não tem release e o link de download do README dá 404.
 $argumentos = @('release', 'create', "v$Versao", $zip, "$zip.sha256", '--notes-file', $arquivoNotas)
-if ($Versao.StartsWith('0.')) { $argumentos += @('--title', "Duplas $Versao (beta)", '--prerelease') }
-else { $argumentos += @('--title', "Duplas $Versao") }
+$argumentos += @('--latest', '--title', $(if ($Versao.StartsWith('0.')) { "Duplas $Versao (beta)" } else { "Duplas $Versao" }))
 & gh @argumentos
 if ($LASTEXITCODE -ne 0) { throw "O GitHub recusou a release (gh saiu com $LASTEXITCODE). A tag v$Versao já foi enviada: rode de novo depois de corrigir." }
 Write-Output "Publicado: Duplas $Versao"
