@@ -19,7 +19,8 @@ $emulador = Get-ChildItem -LiteralPath (Join-Path $raiz 'tools\mgba-dev') -Direc
 if (-not $emulador) { throw 'Coloque o mGBA de desenvolvimento (a pasta com o mGBA.exe) em tools\mgba-dev' }
 $anterior = (Get-Content -LiteralPath (Join-Path $raiz 'versao.json') -Raw | ConvertFrom-Json).versao
 if (-not $SoMontar) {
-  if (git tag -l "v$Versao") { throw "A versão $Versao já foi publicada. Use um número maior." }
+  # tag sem release = publicação anterior que falhou no fim: dá para rodar de novo com o mesmo número
+  if (git tag -l "v$Versao") { gh release view "v$Versao" *> $null; if ($LASTEXITCODE -eq 0) { throw "A versão $Versao já foi publicada. Use um número maior." } }
   if ([version]$Versao -lt [version]$anterior) { throw "A versão $Versao é menor que a atual ($anterior)." }
 }
 if (-not $SoMontar -and (git status --porcelain)) { throw 'Há alterações sem commit. Faça o commit antes de publicar.' }
@@ -73,12 +74,17 @@ if (git status --porcelain versao.json) {   # na primeira publicação a versão
   git add versao.json
   git commit -m "Versão $Versao" | Out-Null
 }
-git tag "v$Versao"
+if (-not (git tag -l "v$Versao")) { git tag "v$Versao" }
 git push origin HEAD --tags
+if ($LASTEXITCODE -ne 0) { throw 'Não deu para enviar ao GitHub (git push).' }
 if (-not $Notas) { $Notas = "Duplas $Versao" }
+# as notas vão por arquivo: o PowerShell 5.1 repassa mal ao gh um texto de várias linhas que começam com "-"
+$arquivoNotas = Join-Path $saida 'notas.md'
+[IO.File]::WriteAllText($arquivoNotas, $Notas, (New-Object System.Text.UTF8Encoding($false)))
 # enquanto a versão começar com 0 (0.x.y) o projeto está em beta: a release sai marcada como pré-lançamento
-$beta = $Versao.StartsWith('0.')
-$titulo = if ($beta) { "Duplas $Versao (beta)" } else { "Duplas $Versao" }
-$extra = if ($beta) { @('--prerelease') } else { @() }
-gh release create "v$Versao" $zip "$zip.sha256" --title $titulo --notes $Notas @extra
+$argumentos = @('release', 'create', "v$Versao", $zip, "$zip.sha256", '--notes-file', $arquivoNotas)
+if ($Versao.StartsWith('0.')) { $argumentos += @('--title', "Duplas $Versao (beta)", '--prerelease') }
+else { $argumentos += @('--title', "Duplas $Versao") }
+& gh @argumentos
+if ($LASTEXITCODE -ne 0) { throw "O GitHub recusou a release (gh saiu com $LASTEXITCODE). A tag v$Versao já foi enviada: rode de novo depois de corrigir." }
 Write-Output "Publicado: Duplas $Versao"
