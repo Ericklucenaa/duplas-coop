@@ -20,7 +20,13 @@ if (-not $emulador) { throw 'Coloque o mGBA de desenvolvimento (a pasta com o mG
 $anterior = (Get-Content -LiteralPath (Join-Path $raiz 'versao.json') -Raw | ConvertFrom-Json).versao
 if (-not $SoMontar) {
   # tag sem release = publicação anterior que falhou no fim: dá para rodar de novo com o mesmo número
-  if (git tag -l "v$Versao") { gh release view "v$Versao" *> $null; if ($LASTEXITCODE -eq 0) { throw "A versão $Versao já foi publicada. Use um número maior." } }
+  if (git tag -l "v$Versao") {
+    $ErrorActionPreference = 'Continue'   # no PowerShell 5.1, o erro do gh ("release not found") viraria exceção
+    gh release view "v$Versao" 2>$null | Out-Null
+    $existe = $LASTEXITCODE -eq 0
+    $ErrorActionPreference = 'Stop'
+    if ($existe) { throw "A versão $Versao já foi publicada. Use um número maior." }
+  }
   if ([version]$Versao -lt [version]$anterior) { throw "A versão $Versao é menor que a atual ($anterior)." }
 }
 if (-not $SoMontar -and (git status --porcelain)) { throw 'Há alterações sem commit. Faça o commit antes de publicar.' }
