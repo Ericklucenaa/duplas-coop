@@ -1,0 +1,1157 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Duplas</title>
+<link rel="icon" href="data:,">
+<style>
+  :root {
+    --base: #E7E7E2;         /* plástico do console */
+    --estante: #DCDDD6;      /* coluna dos pacotes */
+    --painel: #FAFAF7;
+    --tinta: #1C1F24;
+    --tinta-2: #5A5E66;
+    --tinta-3: #7C8088;
+    --regua: #CFD0C9;
+    --casca: #5F6266;        /* plástico do cartucho */
+    --casca-2: #4C4F53;
+    --placa: #1F5C46;        /* verde de placa de circuito: ação principal e "pronto" */
+    --placa-2: #17473A;
+    --placa-clara: #DCEAE2;
+    --ambar: #8E5D10;
+    --ambar-claro: #F4E7CC;
+    --tijolo: #9B3826;
+    --tijolo-claro: #F3DFDA;
+    --rotulo: #6B6F76;       /* cor da versão do jogo (muda com a ROM) */
+    --t-titulo: "Bahnschrift", "DIN Alternate", "Segoe UI", system-ui, sans-serif;
+    --t-texto: "Segoe UI", system-ui, sans-serif;
+    --raio: 4px;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body { margin: 0; background: var(--base); color: var(--tinta); font: 15px/1.55 var(--t-texto); }
+  h1, h2, h3, .botao, .rotulo-jogo, .etapa-marca, .chip { font-family: var(--t-titulo); }
+  button { font: inherit; }
+  [hidden] { display: none !important; }
+
+  /* ------------------------------------------------------------ estrutura */
+  .app { display: grid; grid-template-columns: 280px 1fr; min-height: 100%;
+    background: linear-gradient(90deg, var(--estante) 279px, var(--regua) 279px 280px, var(--base) 280px); }
+  .estante { padding: 22px 16px; display: flex;
+    flex-direction: column; gap: 18px; position: sticky; top: 0; height: 100vh; overflow-y: auto; }
+  .marca-app { padding: 0 8px; display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
+  .marca-app h1 { margin: 0; font-size: 26px; font-weight: 700; font-stretch: condensed; letter-spacing: -0.01em; }
+  .marca-app span { display: block; color: var(--tinta-2); font-size: 13px; margin-top: 2px; }
+  .estante h2 { font-size: 13px; font-weight: 600; color: var(--tinta-2); margin: 0 8px 6px; letter-spacing: .02em; }
+  .area { padding: 34px 40px 72px; max-width: 980px; width: 100%; }
+
+  /* ------------------------------------------------------------ botões */
+  .botao { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-size: 15px; font-weight: 600;
+    border: 0; border-radius: var(--raio); padding: 10px 18px; cursor: pointer; background: var(--placa); color: #fff;
+    min-height: 40px; text-decoration: none; }
+  .botao:not(:disabled):hover { background: var(--placa-2); }
+  .botao.sec { background: var(--painel); color: var(--tinta); box-shadow: inset 0 0 0 1px var(--regua); }
+  .botao.sec:not(:disabled):hover { background: #fff; box-shadow: inset 0 0 0 1px var(--tinta-3); }
+  .botao:disabled { opacity: .45; cursor: not-allowed; }
+  .botao:focus-visible, .pacote:focus-visible, .cartucho:focus-visible, summary:focus-visible, .link:focus-visible {
+    outline: 3px solid var(--placa); outline-offset: 2px; }
+  .novo { width: 100%; justify-content: flex-start; }
+  .novo::before { content: "+"; font-size: 18px; line-height: 1; margin-right: 2px; }
+  .link { background: none; border: 0; padding: 0; color: var(--tinta-2); text-decoration: underline; text-underline-offset: 2px;
+    cursor: pointer; font-size: 13px; text-align: left; }
+  .link:hover { color: var(--tinta); }
+
+  /* ------------------------------------------------------------ idioma: chave de três posições */
+  .idiomas { display: inline-flex; border-radius: var(--raio); box-shadow: inset 0 0 0 1px var(--regua); background: var(--painel);
+    padding: 2px; gap: 1px; flex: none; margin-top: 4px; }
+  .idiomas button { font-family: var(--t-titulo); font-weight: 600; font-size: 12px; min-width: 32px; min-height: 26px; border: 0;
+    border-radius: 3px; background: transparent; color: var(--tinta-2); cursor: pointer; letter-spacing: .03em; }
+  .idiomas button:hover { color: var(--tinta); background: var(--estante); }
+  .idiomas button[aria-checked="true"] { background: var(--tinta); color: #fff; }
+  .idiomas button:focus-visible { outline: 3px solid var(--placa); outline-offset: 1px; }
+
+  /* ------------------------------------------------------------ lista de pacotes */
+  .pacotes { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
+  .pacote { width: 100%; text-align: left; background: transparent; border: 0; border-radius: var(--raio); cursor: pointer;
+    display: grid; grid-template-columns: 6px 1fr; gap: 2px 12px; padding: 10px 10px 10px 8px; color: var(--tinta); }
+  .pacote:hover { background: rgba(255,255,255,.55); }
+  .pacote[aria-current="true"] { background: var(--painel); box-shadow: inset 0 0 0 1px var(--regua); }
+  .pacote .faixa { grid-row: 1 / span 2; border-radius: 2px; background: var(--cor, var(--tinta-3)); }
+  .pacote .nome { font-weight: 600; font-size: 14px; line-height: 1.3; overflow-wrap: anywhere; }
+  .pacote .linha-estado { font-size: 12.5px; color: var(--tinta-2); display: flex; gap: 6px; align-items: center; }
+  .ponto { width: 8px; height: 8px; border-radius: 50%; background: var(--tinta-3); flex: none; }
+  .ponto.ok { background: var(--placa); } .ponto.erro { background: var(--tijolo); } .ponto.rodando { background: var(--ambar); }
+  .estante .vazio { color: var(--tinta-2); font-size: 13.5px; margin: 0 8px; }
+
+  /* ------------------------------------------------------------ rodapé da estante: versão e doação */
+  .rodape-estante { margin-top: auto; padding: 14px 8px 0; border-top: 1px solid var(--regua); display: flex; flex-direction: column;
+    gap: 10px; }
+  .doar { display: flex; align-items: center; gap: 10px; width: 100%; padding: 9px 12px; border: 0; border-radius: var(--raio);
+    background: var(--painel); box-shadow: inset 0 0 0 1px var(--regua); cursor: pointer; color: var(--tinta); text-align: left; }
+  .doar:hover { box-shadow: inset 0 0 0 1px var(--tinta-3); background: #fff; }
+  .doar:focus-visible { outline: 3px solid var(--placa); outline-offset: 2px; }
+  .doar svg { flex: none; color: var(--tijolo); }
+  .doar strong { display: block; font: 600 14px/1.25 var(--t-titulo); }
+  .doar span { display: block; font-size: 12px; color: var(--tinta-2); }
+  .versao { font-size: 12.5px; color: var(--tinta-2); display: flex; flex-direction: column; gap: 3px; }
+  .versao b { color: var(--tinta); font-weight: 600; font-variant-numeric: tabular-nums; }
+  .versao .nova { color: var(--placa); font-weight: 600; }
+
+  /* ------------------------------------------------------------ cabeçalho da área */
+  .topo h2 { font-size: 28px; font-weight: 600; letter-spacing: -0.01em; margin: 0 0 6px; line-height: 1.2; }
+  .topo p { color: var(--tinta-2); margin: 0 0 28px; max-width: 64ch; }
+
+  /* ------------------------------------------------------------ etapas ligadas por uma trilha */
+  .etapas { list-style: none; margin: 0; padding: 0; }
+  .etapa { display: grid; grid-template-columns: 36px 1fr; column-gap: 20px; position: relative; padding-bottom: 34px; }
+  .etapa::before { content: ""; position: absolute; left: 17px; top: 38px; bottom: 4px; width: 2px; background: var(--regua); }
+  .etapa:last-child::before { display: none; }
+  .etapa.feita::before { background: var(--placa); }
+  .etapa-marca { width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; font-weight: 600;
+    background: var(--painel); box-shadow: inset 0 0 0 2px var(--regua); color: var(--tinta-2); font-size: 15px; }
+  .etapa.atual .etapa-marca { box-shadow: inset 0 0 0 2px var(--placa); color: var(--placa); }
+  .etapa.feita .etapa-marca { background: var(--placa); box-shadow: none; color: #fff; }
+  .etapa.bloqueada .etapa-corpo { opacity: .5; }
+  .etapa.bloqueada .etapa-corpo * { pointer-events: none; }
+  .etapa h3 { font-size: 19px; font-weight: 600; margin: 5px 0 4px; }
+  .etapa h3 small { font-weight: 400; color: var(--tinta-2); font-size: 15px; }
+  .explica { color: var(--tinta-2); margin: 0 0 16px; max-width: 62ch; }
+
+  /* ------------------------------------------------------------ cartucho (a área de soltar a ROM) */
+  .bancada { display: grid; grid-template-columns: minmax(250px, 300px) 1fr; gap: 28px; align-items: start; }
+  .cartucho { position: relative; display: block; cursor: pointer; aspect-ratio: 300 / 250; width: 100%;
+    background: var(--casca); color: #fff; padding: 30px 20px 20px;
+    clip-path: polygon(0 0, calc(100% - 26px) 0, 100% 26px, 100% 100%, 0 100%);
+    border-radius: 0 0 10px 10px; transition: transform .12s ease; }
+  .cartucho::before { content: ""; position: absolute; top: 10px; left: 20px; right: 46px; height: 10px;
+    background: repeating-linear-gradient(90deg, var(--casca-2) 0 4px, transparent 4px 9px); }
+  .cartucho::after { content: ""; position: absolute; bottom: 0; left: 26px; right: 26px; height: 8px; border-radius: 3px 3px 0 0;
+    background: repeating-linear-gradient(90deg, #B79A4E 0 6px, var(--casca-2) 6px 9px); }
+  .cartucho input { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+  .etiqueta { height: calc(100% - 14px); border-radius: 3px; padding: 16px 16px 14px; display: flex; flex-direction: column;
+    justify-content: flex-end; gap: 4px; background: var(--rotulo); position: relative; overflow: hidden; }
+  .etiqueta::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 30%; background: rgba(255,255,255,.12); }
+  .rotulo-jogo { font-size: 30px; font-weight: 700; font-stretch: condensed; line-height: 1; letter-spacing: -0.01em;
+    position: relative; overflow-wrap: anywhere; }
+  .rotulo-jogo small { display: block; font-size: 14px; font-weight: 400; font-stretch: normal; letter-spacing: 0;
+    opacity: .85; margin-bottom: 6px; }
+  .etiqueta .ficha { font-size: 12.5px; opacity: .9; position: relative; }
+  .cartucho.vazio { background: var(--regua); }
+  .cartucho.vazio::before { background: repeating-linear-gradient(90deg, #BDBEB7 0 4px, transparent 4px 9px); }
+  .cartucho.vazio::after { background: #BDBEB7; }
+  .cartucho.vazio .etiqueta { background: var(--painel); color: var(--tinta); justify-content: center; align-items: center;
+    text-align: center; border: 2px dashed var(--tinta-3); }
+  .cartucho.vazio .etiqueta::before { display: none; }
+  .cartucho.vazio .rotulo-jogo { font-size: 21px; font-stretch: normal; font-weight: 600; }
+  .cartucho.vazio .ficha { color: var(--tinta-2); }
+  .cartucho.arrastando { transform: translateY(6px); }
+  .cartucho.arrastando .etiqueta { border-color: var(--placa); background: var(--placa-clara); }
+  .cartucho.ocupado .etiqueta { opacity: .75; }
+  .cartucho.ocupado .ficha::after { content: ""; display: inline-block; width: 1.2em; text-align: left;
+    animation: reticencias 1.2s steps(4, end) infinite; }
+  @keyframes reticencias { 0% { content: ""; } 25% { content: "."; } 50% { content: ".."; } 75% { content: "..."; } }
+
+  /* ------------------------------------------------------------ compatibilidade */
+  .veredito { font-family: var(--t-titulo); font-size: 17px; font-weight: 600; margin: 2px 0 10px;
+    display: flex; gap: 10px; align-items: center; }
+  .veredito.ok { color: var(--placa); } .veredito.falta { color: var(--ambar); } .veredito.sem { color: var(--tijolo); }
+  .recursos { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--regua); }
+  .recursos li { display: grid; grid-template-columns: auto 1fr; gap: 2px 12px; padding: 11px 0; border-bottom: 1px solid var(--regua); }
+  .chip { font-size: 12.5px; font-weight: 600; padding: 2px 8px; border-radius: 3px; align-self: start; margin-top: 1px;
+    white-space: nowrap; }
+  .chip.ok, .chip.passou { background: var(--placa-clara); color: var(--placa); }
+  .chip.falta, .chip.rodando { background: var(--ambar-claro); color: var(--ambar); }
+  .chip.sem_suporte, .chip.falhou { background: var(--tijolo-claro); color: var(--tijolo); }
+  .chip.pendente, .chip.pulado { background: var(--estante); color: var(--tinta-2); }
+  .recursos .t { font-weight: 600; font-size: 14.5px; }
+  .recursos .d, .recursos details { grid-column: 2; color: var(--tinta-2); font-size: 13.5px; }
+  .recursos details summary { cursor: pointer; width: fit-content; }
+  .recursos table { border-collapse: collapse; margin-top: 6px; font-size: 12.5px; font-variant-numeric: tabular-nums; }
+  .recursos td { padding: 1px 14px 1px 0; vertical-align: top; }
+  .espera-analise { color: var(--tinta-2); font-size: 14px; border: 1px dashed var(--regua); border-radius: var(--raio);
+    padding: 18px; }
+
+  /* ------------------------------------------------------------ campos */
+  .linha { display: flex; flex-wrap: wrap; gap: 10px; align-items: flex-end; }
+  label.campo { display: flex; flex-direction: column; gap: 5px; font-size: 13.5px; color: var(--tinta-2); flex: 0 1 360px; }
+  input[type=text] { font: 15px var(--t-texto); color: var(--tinta); padding: 9px 12px; min-height: 40px; width: 100%;
+    border: 1px solid var(--tinta-3); border-radius: var(--raio); background: #fff; }
+  input[type=text]:focus-visible { outline: 3px solid var(--placa); outline-offset: 1px; }
+  label.botao input { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+  .nota { font-size: 14px; color: var(--tinta-2); }
+  .nota.ok { color: var(--placa); font-weight: 600; }
+  .aviso { margin-top: 12px; padding: 10px 14px; border-radius: var(--raio); max-width: 64ch; font-size: 14px; }
+  .aviso.erro { background: var(--tijolo-claro); color: var(--tijolo); }
+  .aviso.ok { background: var(--placa-clara); color: var(--placa); }
+  .aviso.info { background: var(--painel); color: var(--tinta-2); box-shadow: inset 0 0 0 1px var(--regua); }
+  .aviso:empty { display: none; }
+
+  /* ------------------------------------------------------------ pacote */
+  .ficha-pacote { display: grid; grid-template-columns: 10px 1fr; gap: 0 18px; margin-bottom: 26px; }
+  .ficha-pacote .faixa { border-radius: 3px; background: var(--cor, var(--tinta-3)); }
+  .ficha-pacote h2 { font-size: 28px; font-weight: 600; margin: 0 0 4px; line-height: 1.2; overflow-wrap: anywhere; }
+  .ficha-pacote p { margin: 0; color: var(--tinta-2); }
+  .ficha-pacote code { display: block; margin-top: 4px; font: 12.5px Consolas, monospace; color: var(--tinta-3);
+    overflow-wrap: anywhere; }
+  .acoes { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 26px; }
+  .velocidade { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; margin-bottom: 30px; }
+  .velocidade .rotulo { font-family: var(--t-titulo); font-weight: 600; font-size: 15px; }
+  .segmentos { display: inline-flex; border-radius: var(--raio); box-shadow: inset 0 0 0 1px var(--tinta-3);
+    background: var(--painel); padding: 3px; gap: 2px; }
+  .segmentos button { font-family: var(--t-titulo); font-weight: 600; font-size: 14px; min-width: 46px; min-height: 34px;
+    border: 0; border-radius: 3px; background: transparent; color: var(--tinta-2); cursor: pointer;
+    font-variant-numeric: tabular-nums; }
+  .segmentos button:hover { background: var(--estante); color: var(--tinta); }
+  .segmentos button[aria-checked="true"] { background: var(--placa); color: #fff; }
+  .segmentos button:focus-visible { outline: 3px solid var(--placa); outline-offset: 2px; }
+  .velocidade .nota { flex: 1 1 260px; }
+  .remover { margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--regua); }
+  .botao.perigo { background: transparent; color: var(--tijolo); box-shadow: inset 0 0 0 1px var(--tijolo); }
+  .botao.perigo:not(:disabled):hover { background: var(--tijolo-claro); }
+  .botao.perigo.cheio { background: var(--tijolo); color: #fff; box-shadow: none; }
+  .botao.perigo.cheio:not(:disabled):hover { background: #82301F; }
+  .confirmar { background: var(--tijolo-claro); border-radius: 6px; padding: 16px 18px; max-width: 64ch; }
+  .confirmar p { margin: 0 0 12px; color: var(--tinta); }
+  .confirmar strong { overflow-wrap: anywhere; }
+  .bloco { background: var(--painel); border: 1px solid var(--regua); border-radius: 6px; padding: 22px 24px; }
+  .bloco h3 { margin: 0 0 4px; font-size: 19px; font-weight: 600; }
+  .bloco-topo { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 16px; }
+  .bloco-topo > div { flex: 1 1 320px; }
+  .bloco-topo .explica { margin: 0; }
+  .placar { display: flex; gap: 3px; height: 10px; margin: 4px 0 8px; }
+  .placar span { flex: 1; border-radius: 2px; background: var(--regua); }
+  .placar .passou { background: var(--placa); } .placar .falhou { background: var(--tijolo); }
+  .placar .rodando { background: var(--ambar); animation: pulso 1.2s ease-in-out infinite; }
+  .placar .pulado { background: var(--tinta-3); }
+  @keyframes pulso { 50% { opacity: .35; } }
+  .placar-texto { font-size: 14px; color: var(--tinta-2); margin: 0 0 14px; font-variant-numeric: tabular-nums; }
+  .placar-texto strong { color: var(--tinta); }
+  .cenarios { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--regua); }
+  .cenarios li { display: grid; grid-template-columns: 86px 1fr; gap: 2px 14px; padding: 9px 0; border-bottom: 1px solid var(--regua); }
+  .cenarios li:last-child { border-bottom: 0; }
+  .cenarios .chip { text-align: center; }
+  .cenarios .d { grid-column: 2; color: var(--tinta-2); font-size: 13px; overflow-wrap: anywhere; }
+
+  /* ------------------------------------------------------------ janelas de confirmação (atualizar, voltar versão) */
+  dialog.janela { border: 0; border-radius: 8px; padding: 0; width: min(520px, calc(100vw - 32px)); background: var(--painel);
+    color: var(--tinta); box-shadow: 0 0 0 1px var(--regua), 0 18px 48px rgba(28,31,36,.28); }
+  dialog.janela::backdrop { background: rgba(28,31,36,.45); }
+  .janela .cabeca { padding: 22px 24px 0; }
+  .janela .selo { display: inline-block; font: 600 12px var(--t-titulo); letter-spacing: .04em; text-transform: uppercase;
+    color: var(--placa); background: var(--placa-clara); border-radius: 3px; padding: 2px 8px; margin-bottom: 10px; }
+  .janela .selo.alerta { color: var(--ambar); background: var(--ambar-claro); }
+  .janela h2 { margin: 0 0 6px; font: 600 21px/1.25 var(--t-titulo); }
+  .janela .corpo { padding: 0 24px; color: var(--tinta-2); font-size: 14.5px; }
+  .janela .corpo p { margin: 0 0 12px; }
+  .janela .notas { max-height: 180px; overflow-y: auto; white-space: pre-wrap; font-size: 13.5px; background: #fff;
+    border: 1px solid var(--regua); border-radius: var(--raio); padding: 10px 12px; margin: 0 0 12px; color: var(--tinta); }
+  .janela .barra { height: 8px; border-radius: 4px; background: var(--estante); overflow: hidden; margin: 4px 0 8px; }
+  .janela .barra span { display: block; height: 100%; width: 0; background: var(--placa); transition: width .2s ease; }
+  .janela .pes { display: flex; justify-content: flex-end; flex-wrap: wrap; gap: 10px; padding: 16px 24px 22px; }
+
+  /* ------------------------------------------------------------ telas estreitas */
+  @media (max-width: 820px) {
+    .app { grid-template-columns: 1fr; background: var(--base); }
+    .estante { position: static; height: auto; background: var(--estante); border-bottom: 1px solid var(--regua); padding: 16px; }
+    .rodape-estante { margin-top: 0; }
+    .area { padding: 24px 16px 56px; }
+    .bancada { grid-template-columns: 1fr; }
+    .cartucho { max-width: 300px; }
+  }
+  @media (max-width: 480px) {
+    .etapa { grid-template-columns: 30px 1fr; column-gap: 14px; }
+    .etapa-marca { width: 30px; height: 30px; font-size: 14px; }
+    .etapa::before { left: 14px; top: 32px; }
+    .topo h2, .ficha-pacote h2 { font-size: 23px; }
+    .bloco { padding: 18px 16px; }
+    .acoes .botao { flex: 1 1 100%; }
+    .janela .pes .botao { flex: 1 1 100%; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="estante" aria-labelledby="t-app">
+    <div class="marca-app">
+      <div><h1 id="t-app">Duplas</h1><span data-i18n="app_sub"></span></div>
+      <div class="idiomas" role="radiogroup" data-i18n-attr="aria-label:idioma" id="idiomas">
+        <button type="button" role="radio" data-lang="en" lang="en" title="English">EN</button>
+        <button type="button" role="radio" data-lang="pt" lang="pt-BR" title="Português">PT</button>
+        <button type="button" role="radio" data-lang="es" lang="es" title="Español">ES</button>
+      </div>
+    </div>
+    <button class="botao sec novo" id="novo" data-i18n="novo"></button>
+    <div>
+      <h2 id="t-pacotes" data-i18n="seus_pacotes"></h2>
+      <ul class="pacotes" id="pacotes" aria-labelledby="t-pacotes"></ul>
+    </div>
+    <div class="rodape-estante">
+      <button class="doar" id="doar" type="button">
+        <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 2.9 4.8 6.4 4.5c2.1-.2 3.7.9 4.6 2.4.9-1.5 2.5-2.6 4.6-2.4 3.5.3 5.5 3.9 4 7.3C19.5 16.4 12 21 12 21z"/></svg>
+        <div><strong data-i18n="doar"></strong><span data-i18n="doar_sub"></span></div>
+      </button>
+      <div class="versao" aria-live="polite">
+        <span><span data-i18n="versao"></span> <b id="versao-atual">-</b> <span id="versao-nova" class="nova"></span></span>
+        <button class="link" id="procurar" type="button" data-i18n="procurar"></button>
+        <button class="link" id="voltar" type="button" hidden></button>
+        <button class="link" id="projeto" type="button" data-i18n="projeto"></button>
+      </div>
+    </div>
+  </aside>
+
+  <main class="area">
+    <!-- ======================================================= preparar uma ROM -->
+    <div id="vista-novo">
+      <header class="topo">
+        <h2 data-i18n="novo_titulo"></h2>
+        <p data-i18n="novo_texto"></p>
+        <div class="aviso ok" id="aviso-topo" role="status" style="margin:-12px 0 24px"></div>
+      </header>
+
+      <ol class="etapas">
+        <li class="etapa atual" id="etapa-rom">
+          <span class="etapa-marca" aria-hidden="true">1</span>
+          <div class="etapa-corpo">
+            <h3 id="t-rom" data-i18n="rom_titulo"></h3>
+            <p class="explica" data-i18n="rom_texto"></p>
+            <div class="bancada">
+              <label class="cartucho vazio" id="cartucho" tabindex="0" aria-labelledby="t-rom" aria-describedby="erro-rom">
+                <input type="file" id="arquivo-rom" accept=".gba">
+                <div class="etiqueta" id="etiqueta"></div>
+              </label>
+              <div aria-live="polite">
+                <div class="espera-analise" id="espera-analise" data-i18n="espera_analise"></div>
+                <div id="analise" hidden>
+                  <div class="veredito" id="veredito"></div>
+                  <ul class="recursos" id="recursos"></ul>
+                </div>
+              </div>
+            </div>
+            <div class="aviso erro" id="erro-rom" role="alert"></div>
+          </div>
+        </li>
+
+        <li class="etapa bloqueada" id="etapa-save">
+          <span class="etapa-marca" aria-hidden="true">2</span>
+          <div class="etapa-corpo">
+            <h3><span data-i18n="save_titulo"></span> <small data-i18n="opcional"></small></h3>
+            <p class="explica" data-i18n="save_texto"></p>
+            <div class="linha" style="align-items:center">
+              <label class="botao sec" tabindex="0" id="botao-save"><span data-i18n="escolher_save"></span>
+                <input type="file" id="arquivo-save" accept=".sav"></label>
+              <span id="nome-save" class="nota"></span>
+            </div>
+            <div class="aviso erro" id="erro-save" role="alert"></div>
+          </div>
+        </li>
+
+        <li class="etapa bloqueada" id="etapa-pacote">
+          <span class="etapa-marca" aria-hidden="true">3</span>
+          <div class="etapa-corpo">
+            <h3 data-i18n="gerar_titulo"></h3>
+            <p class="explica" data-i18n="gerar_texto"></p>
+            <div class="linha">
+              <label class="campo" for="nome-pacote"><span data-i18n="nome_pasta"></span>
+                <input type="text" id="nome-pacote" autocomplete="off"></label>
+              <button class="botao" id="gerar" data-i18n="gerar"></button>
+            </div>
+            <div class="aviso" id="resultado-pacote" role="status"></div>
+          </div>
+        </li>
+      </ol>
+    </div>
+
+    <!-- ======================================================= um pacote gerado -->
+    <div id="vista-pacote" hidden>
+      <header class="ficha-pacote" id="ficha">
+        <span class="faixa" aria-hidden="true"></span>
+        <div>
+          <h2 id="pac-nome"></h2>
+          <p id="pac-info"></p>
+        </div>
+      </header>
+      <div class="acoes">
+        <button class="botao" id="pac-local" data-i18n="testar_local"></button>
+        <button class="botao sec" id="pac-pasta" data-i18n="abrir_pasta"></button>
+      </div>
+      <div class="velocidade">
+        <span class="rotulo" id="t-vel" data-i18n="velocidade"></span>
+        <div class="segmentos" role="radiogroup" aria-labelledby="t-vel" id="vel"></div>
+        <span class="nota" id="vel-nota"></span>
+      </div>
+      <div class="aviso" id="pac-aviso" role="status"></div>
+
+      <section class="bloco" aria-labelledby="t-teste">
+        <div class="bloco-topo">
+          <div>
+            <h3 id="t-teste" data-i18n="teste_titulo"></h3>
+            <p class="explica" data-i18n="teste_texto"></p>
+          </div>
+          <button class="botao" id="testar"></button>
+        </div>
+        <div id="teste-vazio" class="nota" data-i18n="nao_testado"></div>
+        <div id="teste" hidden aria-live="polite">
+          <div class="placar" id="placar" aria-hidden="true"></div>
+          <p class="placar-texto" id="placar-texto"></p>
+          <ul class="cenarios" id="cenarios"></ul>
+        </div>
+      </section>
+
+      <div class="remover">
+        <button class="botao perigo" id="apagar" data-i18n="apagar"></button>
+        <div class="confirmar" id="confirmar" hidden role="alertdialog" aria-labelledby="confirmar-texto">
+          <p id="confirmar-texto"></p>
+          <div class="linha">
+            <button class="botao perigo cheio" id="apagar-sim" data-i18n="apagar_sim"></button>
+            <button class="botao sec" id="apagar-nao" data-i18n="cancelar"></button>
+          </div>
+        </div>
+        <div class="aviso erro" id="apagar-erro" role="alert"></div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- ======================================================= atualização disponível -->
+<dialog class="janela" id="j-atualizar" aria-labelledby="j-atualizar-titulo">
+  <div class="cabeca">
+    <span class="selo" data-i18n="nova_versao"></span>
+    <h2 id="j-atualizar-titulo"></h2>
+  </div>
+  <div class="corpo">
+    <p id="j-atualizar-texto"></p>
+    <div class="notas" id="j-atualizar-notas" hidden></div>
+    <div id="j-atualizar-progresso" hidden>
+      <div class="barra"><span id="j-atualizar-barra"></span></div>
+      <p id="j-atualizar-fase" aria-live="polite"></p>
+    </div>
+    <div class="aviso erro" id="j-atualizar-erro" role="alert"></div>
+  </div>
+  <div class="pes">
+    <button class="botao sec" id="j-atualizar-nao" data-i18n="cancelar"></button>
+    <button class="botao" id="j-atualizar-sim" data-i18n="atualizar"></button>
+  </div>
+</dialog>
+
+<!-- ======================================================= voltar à versão anterior -->
+<dialog class="janela" id="j-voltar" aria-labelledby="j-voltar-titulo">
+  <div class="cabeca">
+    <span class="selo alerta" data-i18n="voltar_selo"></span>
+    <h2 id="j-voltar-titulo"></h2>
+  </div>
+  <div class="corpo">
+    <p id="j-voltar-texto"></p>
+    <div class="aviso erro" id="j-voltar-erro" role="alert"></div>
+  </div>
+  <div class="pes">
+    <button class="botao sec" id="j-voltar-nao" data-i18n="cancelar"></button>
+    <button class="botao" id="j-voltar-sim"></button>
+  </div>
+</dialog>
+
+<script>
+const $ = (id) => document.getElementById(id);
+let atual = null;          // análise da ROM em uso
+let pacotes = [];          // pacotes gerados
+let selecionado = null;    // nome do pacote aberto
+let vigia = null;          // atualização dos testes em andamento (todos os pacotes, em qualquer tela)
+let config = { idioma: 'en', versao: '-', doacao: '', projeto: '', anterior: null };
+let atualizacao = null;    // última consulta de versão nova
+let lang = 'en';
+
+// ---------------------------------------------------------------- textos (inglês é o padrão)
+const I18N = {
+  en: {
+    app_sub: 'Co-op for GBA Pokémon games', idioma: 'Language', novo: 'Prepare another ROM', seus_pacotes: 'Your packages',
+    sem_pacotes: 'No packages yet. A package appears here after step 3.',
+    doar: 'Support the project', doar_sub: 'Donate on Ko-fi', versao: 'Version', procurar: 'Check for updates',
+    procurando: 'Checking...', em_dia: 'You have the latest version.', sem_rede: 'Could not check for updates (offline?).',
+    voltar_link: 'Return to version {v}', projeto: 'Project page', nova_disponivel: '(v{v} available)',
+    novo_titulo: 'Prepare a game to play as a pair',
+    novo_texto: 'The tool checks what works in the ROM and builds a folder with the emulator and the game ready for you and your partner. Everything stays on your PC; the ROM you choose is never changed. Duplas does not include any game: use your own ROM.',
+    rom_titulo: 'Game ROM', rom_texto: 'FireRed, LeafGreen, Emerald, Ruby or Sapphire: original, translated or modified.',
+    espera_analise: 'Put the ROM in the cartridge. What Duplas mode needs and what was found in it appears here.',
+    soltar: 'Drop the ROM here', ou_clique: 'or click to choose the .gba file', lendo: 'Reading the ROM',
+    nao_gba: '"{n}" is not a GBA ROM. Choose the file that ends in .gba.',
+    ficha_rom: '{c}, version 1.{r}, {l}, {m} MB',
+    estado_ok: 'Ready', estado_falta: 'Incomplete', estado_sem_suporte: 'Unsupported',
+    ver_pontos: 'See the {n} points in the game', nao_achado: 'not found',
+    veredito_ok: 'Ready to play as a pair', veredito_sem: 'This game does not have Duplas mode',
+    veredito_falta: 'Works in part: some points of the game were not found',
+    save_titulo: 'Save', opcional: 'optional',
+    save_texto: 'With your save, the game starts where you left off and the test uses your team. Without one, the game starts from scratch and the test creates a game by itself (it takes a few more minutes).',
+    escolher_save: 'Choose save (.sav)', save_ja: 'Save already sent for this ROM.', sem_save: 'No save chosen.',
+    enviando_save: 'Sending the save…', save_ok: '{n} added',
+    gerar_titulo: 'Build the package',
+    gerar_texto: 'A folder with the emulator, the game and three shortcuts: host a game, join someone\'s game and test on this PC. You can copy the folder to your partner\'s PC.',
+    nome_pasta: 'Folder name', gerar: 'Build package', nome_vazio: 'Give the package folder a name.', gerando: 'Building the package…',
+    gerado_ok: 'Package built. Run the test or open it on this PC to check.',
+    gerado_falta: 'Package built. This ROM lacks part of what the double battle needs: only the parts marked as ready work.',
+    testar_local: 'Test on this PC', abrir_pasta: 'Open folder', velocidade: 'Game speed',
+    vel_nota: 'Applies the next time the game opens. As a pair, both must use the same speed.',
+    vel_ok: 'Saved: {v}x. Applies the next time the game opens.', vel_titulo1: 'Normal speed', vel_titulo: '{v} times faster',
+    base_jogo: 'Base: Pokémon {j}{l}. ', com_save: 'With your save. ', sem_save_pac: 'No save: the game starts from scratch. ',
+    abrindo_local: 'Opening both game windows. They connect by themselves when both players are on the map.',
+    teste_titulo: 'Compatibility test',
+    teste_texto: 'Two hidden copies of the game play the double battle scenarios by themselves. It takes about 25 minutes; you can leave it running, go to another package and test several at the same time.',
+    nao_testado: 'This package has not been tested yet.',
+    rodar: 'Run test', rodar_de_novo: 'Run again', rodando: 'Test running…',
+    nunca_testado: 'Not tested yet', testando: 'Testing, {n} of {t}', resumo: 'Test: {p} of {t} passed',
+    passaram: '{p} of {t} passed', falharam: '{n} failed', pulados: '{n} skipped', na_fila: '{n} in queue',
+    cen_pendente: 'Queued', cen_rodando: 'Running', cen_passou: 'Passed', cen_falhou: 'Failed', cen_pulado: 'Skipped',
+    apagar: 'Delete package', apagar_sim: 'Delete permanently', cancelar: 'Cancel', apagando: 'Deleting…',
+    confirmar_apagar: 'Delete {n}? The whole folder goes away: the game, the saves and the progress of whoever played with this package. This cannot be undone.',
+    apagado: 'Package "{n}" deleted.',
+    nova_versao: 'New version', atualizar: 'Update', atualizacao_titulo: 'Version {v} is available',
+    atualizacao_texto: 'Do you want to update now? You are on version {a}. Your packages, saves and analyzed ROMs stay as they are, and you can return to version {a} later if something goes wrong.',
+    fase_baixando: 'Downloading… {p}%', fase_conferindo: 'Checking the download…', fase_instalando: 'Installing…',
+    fase_pronto: 'Updated. Restarting the app…', fase_pronto_manual: 'Updated. Close and open the app again to finish.',
+    voltar_selo: 'Previous version', voltar_titulo: 'Return to version {v}?',
+    voltar_texto: 'Use this if version {a} is giving you trouble with a game. The app goes back to version {v} and your packages start using its scripts. Packages, saves and progress are kept. Version {a} will not be offered again until a newer one comes out.',
+    voltar_sim: 'Return to {v}', voltado: 'Back on version {v}. Restarting the app…',
+  },
+  pt: {
+    app_sub: 'Cooperativo para Pokémon de GBA', idioma: 'Idioma', novo: 'Preparar outra ROM', seus_pacotes: 'Seus pacotes',
+    sem_pacotes: 'Nenhum pacote ainda. O pacote aparece aqui depois da etapa 3.',
+    doar: 'Apoie o projeto', doar_sub: 'Doe pelo Ko-fi', versao: 'Versão', procurar: 'Procurar atualizações',
+    procurando: 'Procurando...', em_dia: 'Você está na versão mais nova.', sem_rede: 'Não deu para procurar atualizações (sem internet?).',
+    voltar_link: 'Voltar para a versão {v}', projeto: 'Página do projeto', nova_disponivel: '(v{v} disponível)',
+    novo_titulo: 'Preparar um jogo para jogar em dupla',
+    novo_texto: 'A ferramenta confere o que funciona na ROM e monta uma pasta com o emulador e o jogo prontos para você e o seu parceiro. Tudo fica no seu PC; a ROM escolhida nunca é alterada. O Duplas não inclui nenhum jogo: use a sua própria ROM.',
+    rom_titulo: 'ROM do jogo', rom_texto: 'FireRed, LeafGreen, Emerald, Ruby ou Sapphire: original, traduzido ou modificado.',
+    espera_analise: 'Coloque a ROM no cartucho. O que o modo Duplas precisa e o que foi encontrado nela aparece aqui.',
+    soltar: 'Solte a ROM aqui', ou_clique: 'ou clique para escolher o arquivo .gba', lendo: 'Lendo a ROM',
+    nao_gba: '"{n}" não é uma ROM de GBA. Escolha o arquivo que termina em .gba.',
+    ficha_rom: '{c}, versão 1.{r}, {l}, {m} MB',
+    estado_ok: 'Pronto', estado_falta: 'Incompleto', estado_sem_suporte: 'Sem suporte',
+    ver_pontos: 'Ver os {n} pontos do jogo', nao_achado: 'não achado',
+    veredito_ok: 'Pronta para jogar em dupla', veredito_sem: 'Este jogo não tem o modo Duplas',
+    veredito_falta: 'Funciona em parte: alguns pontos do jogo não foram encontrados',
+    save_titulo: 'Save', opcional: 'opcional',
+    save_texto: 'Com o seu save, o jogo começa de onde você parou e o teste usa a sua equipe. Sem save, o jogo começa do zero e o teste cria uma partida sozinho (leva alguns minutos a mais).',
+    escolher_save: 'Escolher save (.sav)', save_ja: 'Save já enviado para esta ROM.', sem_save: 'Nenhum save escolhido.',
+    enviando_save: 'Enviando o save…', save_ok: '{n} adicionado',
+    gerar_titulo: 'Gerar o pacote',
+    gerar_texto: 'Uma pasta com o emulador, o jogo e três atalhos: hospedar a partida, entrar na partida de alguém e testar no mesmo PC. Pode copiar a pasta para o PC do seu parceiro.',
+    nome_pasta: 'Nome da pasta', gerar: 'Gerar pacote', nome_vazio: 'Dê um nome para a pasta do pacote.', gerando: 'Gerando o pacote…',
+    gerado_ok: 'Pacote gerado. Rode o teste ou abra no mesmo PC para conferir.',
+    gerado_falta: 'Pacote gerado. Esta ROM não tem tudo o que a batalha em dupla precisa: só a parte marcada como pronta funciona.',
+    testar_local: 'Testar no mesmo PC', abrir_pasta: 'Abrir pasta', velocidade: 'Velocidade do jogo',
+    vel_nota: 'Vale na próxima vez que o jogo abrir. Em dupla, os dois precisam usar a mesma velocidade.',
+    vel_ok: 'Guardado: {v}x. Vale na próxima vez que o jogo abrir.', vel_titulo1: 'Velocidade normal', vel_titulo: '{v} vezes mais rápido',
+    base_jogo: 'Base: Pokémon {j}{l}. ', com_save: 'Com o seu save. ', sem_save_pac: 'Sem save: o jogo começa do zero. ',
+    abrindo_local: 'Abrindo as duas janelas do jogo. Elas se conectam sozinhas quando os dois estiverem no mapa.',
+    teste_titulo: 'Teste de compatibilidade',
+    teste_texto: 'Duas cópias do jogo, escondidas, jogam sozinhas os cenários da batalha em dupla. Leva cerca de 25 minutos; pode deixar rodando, ir para outro pacote e testar vários ao mesmo tempo.',
+    nao_testado: 'Este pacote ainda não foi testado.',
+    rodar: 'Rodar teste', rodar_de_novo: 'Rodar de novo', rodando: 'Teste rodando…',
+    nunca_testado: 'Ainda não testado', testando: 'Testando, {n} de {t}', resumo: 'Teste: {p} de {t} passaram',
+    passaram: '{p} de {t} passaram', falharam: '{n} falharam', pulados: '{n} pulados', na_fila: '{n} na fila',
+    cen_pendente: 'Na fila', cen_rodando: 'Rodando', cen_passou: 'Passou', cen_falhou: 'Falhou', cen_pulado: 'Pulado',
+    apagar: 'Apagar pacote', apagar_sim: 'Apagar de vez', cancelar: 'Cancelar', apagando: 'Apagando…',
+    confirmar_apagar: 'Apagar {n}? A pasta inteira vai embora: o jogo, os saves e o progresso de quem jogou com este pacote. Não dá para desfazer.',
+    apagado: 'Pacote "{n}" apagado.',
+    nova_versao: 'Nova versão', atualizar: 'Atualizar', atualizacao_titulo: 'A versão {v} está disponível',
+    atualizacao_texto: 'Deseja atualizar agora? Você está na versão {a}. Seus pacotes, saves e ROMs analisadas continuam como estão, e dá para voltar para a versão {a} depois se algo der errado.',
+    fase_baixando: 'Baixando… {p}%', fase_conferindo: 'Conferindo o download…', fase_instalando: 'Instalando…',
+    fase_pronto: 'Atualizado. Reabrindo o app…', fase_pronto_manual: 'Atualizado. Feche e abra o app de novo para terminar.',
+    voltar_selo: 'Versão anterior', voltar_titulo: 'Voltar para a versão {v}?',
+    voltar_texto: 'Use se a versão {a} estiver dando problema com algum jogo. O app volta para a versão {v} e os seus pacotes passam a usar os scripts dela. Pacotes, saves e progresso são mantidos. A versão {a} não será oferecida de novo até sair uma mais nova.',
+    voltar_sim: 'Voltar para {v}', voltado: 'De volta na versão {v}. Reabrindo o app…',
+  },
+  es: {
+    app_sub: 'Cooperativo para Pokémon de GBA', idioma: 'Idioma', novo: 'Preparar otra ROM', seus_pacotes: 'Tus paquetes',
+    sem_pacotes: 'Aún no hay paquetes. El paquete aparece aquí después del paso 3.',
+    doar: 'Apoya el proyecto', doar_sub: 'Dona en Ko-fi', versao: 'Versión', procurar: 'Buscar actualizaciones',
+    procurando: 'Buscando...', em_dia: 'Tienes la versión más reciente.', sem_rede: 'No se pudo buscar actualizaciones (¿sin internet?).',
+    voltar_link: 'Volver a la versión {v}', projeto: 'Página del proyecto', nova_disponivel: '(v{v} disponible)',
+    novo_titulo: 'Preparar un juego para jugar en pareja',
+    novo_texto: 'La herramienta comprueba qué funciona en la ROM y arma una carpeta con el emulador y el juego listos para ti y tu compañero. Todo queda en tu PC; la ROM elegida nunca se modifica. Duplas no incluye ningún juego: usa tu propia ROM.',
+    rom_titulo: 'ROM del juego', rom_texto: 'FireRed, LeafGreen, Emerald, Ruby o Sapphire: original, traducido o modificado.',
+    espera_analise: 'Pon la ROM en el cartucho. Lo que necesita el modo Duplas y lo que se encontró en ella aparece aquí.',
+    soltar: 'Suelta la ROM aquí', ou_clique: 'o haz clic para elegir el archivo .gba', lendo: 'Leyendo la ROM',
+    nao_gba: '"{n}" no es una ROM de GBA. Elige el archivo que termina en .gba.',
+    ficha_rom: '{c}, versión 1.{r}, {l}, {m} MB',
+    estado_ok: 'Listo', estado_falta: 'Incompleto', estado_sem_suporte: 'Sin soporte',
+    ver_pontos: 'Ver los {n} puntos del juego', nao_achado: 'no encontrado',
+    veredito_ok: 'Lista para jugar en pareja', veredito_sem: 'Este juego no tiene el modo Duplas',
+    veredito_falta: 'Funciona en parte: no se encontraron algunos puntos del juego',
+    save_titulo: 'Partida guardada', opcional: 'opcional',
+    save_texto: 'Con tu partida, el juego empieza donde lo dejaste y la prueba usa tu equipo. Sin ella, el juego empieza de cero y la prueba crea una partida sola (tarda unos minutos más).',
+    escolher_save: 'Elegir partida (.sav)', save_ja: 'Partida ya enviada para esta ROM.', sem_save: 'Ninguna partida elegida.',
+    enviando_save: 'Enviando la partida…', save_ok: '{n} añadida',
+    gerar_titulo: 'Crear el paquete',
+    gerar_texto: 'Una carpeta con el emulador, el juego y tres accesos: crear una partida, unirse a la de alguien y probar en este PC. Puedes copiar la carpeta al PC de tu compañero.',
+    nome_pasta: 'Nombre de la carpeta', gerar: 'Crear paquete', nome_vazio: 'Ponle un nombre a la carpeta del paquete.', gerando: 'Creando el paquete…',
+    gerado_ok: 'Paquete creado. Ejecuta la prueba o ábrelo en este PC para comprobarlo.',
+    gerado_falta: 'Paquete creado. A esta ROM le falta parte de lo que necesita el combate doble: solo funciona lo marcado como listo.',
+    testar_local: 'Probar en este PC', abrir_pasta: 'Abrir carpeta', velocidade: 'Velocidad del juego',
+    vel_nota: 'Se aplica la próxima vez que se abra el juego. En pareja, los dos deben usar la misma velocidad.',
+    vel_ok: 'Guardado: {v}x. Se aplica la próxima vez que se abra el juego.', vel_titulo1: 'Velocidad normal', vel_titulo: '{v} veces más rápido',
+    base_jogo: 'Base: Pokémon {j}{l}. ', com_save: 'Con tu partida. ', sem_save_pac: 'Sin partida: el juego empieza de cero. ',
+    abrindo_local: 'Abriendo las dos ventanas del juego. Se conectan solas cuando los dos estén en el mapa.',
+    teste_titulo: 'Prueba de compatibilidad',
+    teste_texto: 'Dos copias ocultas del juego juegan solas los escenarios del combate doble. Tarda unos 25 minutos; puedes dejarla en marcha, ir a otro paquete y probar varios a la vez.',
+    nao_testado: 'Este paquete aún no se ha probado.',
+    rodar: 'Ejecutar prueba', rodar_de_novo: 'Ejecutar de nuevo', rodando: 'Prueba en curso…',
+    nunca_testado: 'Sin probar', testando: 'Probando, {n} de {t}', resumo: 'Prueba: {p} de {t} pasaron',
+    passaram: '{p} de {t} pasaron', falharam: '{n} fallaron', pulados: '{n} omitidos', na_fila: '{n} en cola',
+    cen_pendente: 'En cola', cen_rodando: 'En curso', cen_passou: 'Pasó', cen_falhou: 'Falló', cen_pulado: 'Omitido',
+    apagar: 'Borrar paquete', apagar_sim: 'Borrar definitivamente', cancelar: 'Cancelar', apagando: 'Borrando…',
+    confirmar_apagar: '¿Borrar {n}? Se elimina la carpeta entera: el juego, las partidas y el progreso de quien jugó con este paquete. No se puede deshacer.',
+    apagado: 'Paquete "{n}" borrado.',
+    nova_versao: 'Nueva versión', atualizar: 'Actualizar', atualizacao_titulo: 'La versión {v} está disponible',
+    atualizacao_texto: '¿Quieres actualizar ahora? Estás en la versión {a}. Tus paquetes, partidas y ROMs analizadas se mantienen, y puedes volver a la versión {a} más tarde si algo sale mal.',
+    fase_baixando: 'Descargando… {p}%', fase_conferindo: 'Comprobando la descarga…', fase_instalando: 'Instalando…',
+    fase_pronto: 'Actualizado. Reabriendo la app…', fase_pronto_manual: 'Actualizado. Cierra y abre la app de nuevo para terminar.',
+    voltar_selo: 'Versión anterior', voltar_titulo: '¿Volver a la versión {v}?',
+    voltar_texto: 'Úsalo si la versión {a} da problemas con algún juego. La app vuelve a la versión {v} y tus paquetes pasan a usar sus scripts. Se mantienen los paquetes, las partidas y el progreso. La versión {a} no se ofrecerá de nuevo hasta que salga una más nueva.',
+    voltar_sim: 'Volver a {v}', voltado: 'De vuelta en la versión {v}. Reabriendo la app…',
+  },
+};
+function t(chave, vars) {
+  let s = (I18N[lang] && I18N[lang][chave]) || I18N.en[chave] || chave;
+  for (const [k, v] of Object.entries(vars || {})) s = s.split('{' + k + '}').join(v);
+  return s;
+}
+// texto que veio do servidor: nos três idiomas ({en, pt, es}) ou só texto (resultados antigos)
+const tr = (x) => (x && typeof x === 'object') ? (x[lang] || x.en || '') : (x || '');
+
+function aplicarTextos() {
+  document.documentElement.lang = { en: 'en', pt: 'pt-BR', es: 'es' }[lang];
+  document.querySelectorAll('[data-i18n]').forEach((e) => { e.textContent = t(e.dataset.i18n); });
+  document.querySelectorAll('[data-i18n-attr]').forEach((e) => {
+    const [attr, chave] = e.dataset.i18nAttr.split(':');
+    e.setAttribute(attr, t(chave));
+  });
+  for (const b of $('idiomas').querySelectorAll('button')) {
+    const sim = b.dataset.lang === lang;
+    b.setAttribute('aria-checked', String(sim));
+    b.tabIndex = sim ? 0 : -1;
+  }
+}
+
+async function api(caminho, corpo, tipo) {
+  const opcoes = corpo === undefined ? {} : { method: 'POST', body: corpo, headers: tipo ? { 'Content-Type': tipo } : {} };
+  const r = await fetch(caminho, opcoes);
+  const dados = await r.json().catch(() => ({ erro: 'Invalid response from the tool.' }));
+  if (!r.ok || dados.erro) throw new Error(tr(dados.erro) || 'The tool did not respond.');
+  return dados;
+}
+const post = (caminho, obj) => api(caminho, JSON.stringify(obj || {}), 'application/json');
+
+function el(tag, classe, texto) {
+  const e = document.createElement(tag);
+  if (classe) e.className = classe;
+  if (texto !== undefined) e.textContent = texto;
+  return e;
+}
+
+const VERSAO_COR = { BPR: '#B8382A', BPG: '#387F33', BPE: '#157A60', AXV: '#9C2238', AXP: '#2A579B' };
+const corDe = (codigo) => VERSAO_COR[(codigo || '').slice(0, 3)] || '#6B6F76';
+
+// ---------------------------------------------------------------- idioma
+async function trocarIdioma(novo, focar) {
+  if (novo === lang) return;
+  lang = novo;
+  aplicarTextos();
+  redesenhar();
+  if (focar) $('idiomas').querySelector(`[data-lang="${novo}"]`).focus();
+  try { await post('/api/idioma', { idioma: novo }); } catch (e) { /* o app segue no idioma escolhido */ }
+}
+for (const b of $('idiomas').querySelectorAll('button')) {
+  b.addEventListener('click', () => trocarIdioma(b.dataset.lang));
+  b.addEventListener('keydown', (e) => {
+    const ordem = ['en', 'pt', 'es'];
+    const passo = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[e.key];
+    if (!passo) return;
+    e.preventDefault();
+    trocarIdioma(ordem[(ordem.indexOf(lang) + passo + 3) % 3], true);
+  });
+}
+// tudo o que é desenhado por código, de novo no idioma atual
+function redesenhar() {
+  desenharPacotes();
+  if (!atual) etiquetaVazia();
+  else { pintarRom(); mostrarRecursos(atual.recursos, atual.pronto); }
+  $('nome-save').textContent = atual ? (atual.tem_save ? t('save_ja') : t('sem_save')) : '';
+  if (selecionado) { const p = pacotes.find((x) => x.nome === selecionado); if (p) mostrarFicha(p); }
+  mostrarVersao();
+}
+
+// ---------------------------------------------------------------- vistas
+function mostrarVista(qual) {
+  $('vista-novo').hidden = qual !== 'novo';
+  $('vista-pacote').hidden = qual !== 'pacote';
+  if (qual === 'novo') { selecionado = null; desenharPacotes(); }
+}
+$('novo').addEventListener('click', () => { mostrarVista('novo'); $('cartucho').focus(); });
+
+function marcarEtapas() {
+  const temRom = !!atual;
+  $('etapa-rom').className = 'etapa ' + (temRom ? 'feita' : 'atual');
+  $('etapa-save').className = 'etapa ' + (!temRom ? 'bloqueada' : (atual.tem_save ? 'feita' : 'atual'));
+  $('etapa-pacote').className = 'etapa ' + (!temRom ? 'bloqueada' : 'atual');
+  for (const id of ['etapa-save', 'etapa-pacote']) $(id).toggleAttribute('inert', !temRom);
+}
+
+// ---------------------------------------------------------------- ROM
+const cartucho = $('cartucho');
+['dragenter', 'dragover'].forEach((tp) => cartucho.addEventListener(tp, (e) => { e.preventDefault(); cartucho.classList.add('arrastando'); }));
+['dragleave', 'drop'].forEach((tp) => cartucho.addEventListener(tp, () => cartucho.classList.remove('arrastando')));
+cartucho.addEventListener('drop', (e) => { e.preventDefault(); if (e.dataTransfer.files[0]) enviarRom(e.dataTransfer.files[0]); });
+cartucho.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); $('arquivo-rom').click(); } });
+$('arquivo-rom').addEventListener('change', (e) => { if (e.target.files[0]) enviarRom(e.target.files[0]); e.target.value = ''; });
+['dragover', 'drop'].forEach((tp) => window.addEventListener(tp, (e) => e.preventDefault()));
+
+function pintarEtiqueta(titulo, detalhe, carregado, cor, sobre) {
+  const etiqueta = $('etiqueta');
+  const nome = el('span', 'rotulo-jogo');
+  if (sobre) nome.append(el('small', '', sobre));
+  nome.append(titulo);
+  etiqueta.replaceChildren(nome, el('span', 'ficha', detalhe));
+  cartucho.classList.toggle('vazio', !carregado);
+  cartucho.style.setProperty('--rotulo', cor || '#6B6F76');
+}
+const etiquetaVazia = () => pintarEtiqueta(t('soltar'), t('ou_clique'), false);
+function pintarRom() {
+  const c = atual.cabecalho;
+  pintarEtiqueta(c.jogo || c.titulo, t('ficha_rom', { c: c.codigo, r: c.revisao, l: c.idioma, m: c.tamanho_mb }), true,
+    corDe(c.codigo), c.jogo ? 'Pokémon' : '');
+}
+
+async function enviarRom(arquivo) {
+  if (!/\.gba$/i.test(arquivo.name)) { $('erro-rom').textContent = t('nao_gba', { n: arquivo.name }); return; }
+  $('erro-rom').textContent = '';
+  cartucho.classList.add('ocupado');
+  pintarEtiqueta(t('lendo'), arquivo.name, false);
+  try {
+    atual = await api('/api/analisar', arquivo, 'application/octet-stream');
+    pintarRom();
+    mostrarRecursos(atual.recursos, atual.pronto);
+    $('nome-pacote').value = arquivo.name.replace(/\.gba$/i, '');
+    $('nome-save').className = 'nota';
+    $('nome-save').textContent = atual.tem_save ? t('save_ja') : t('sem_save');
+    $('resultado-pacote').textContent = '';
+  } catch (erro) {
+    atual = null;
+    etiquetaVazia();
+    $('erro-rom').textContent = erro.message;
+    $('analise').hidden = true; $('espera-analise').hidden = false;
+  } finally {
+    cartucho.classList.remove('ocupado');
+    marcarEtapas();
+  }
+}
+
+function mostrarRecursos(recursos, pronto) {
+  $('espera-analise').hidden = true; $('analise').hidden = false;
+  const semSuporte = recursos.some((r) => r.estado === 'sem_suporte');
+  const v = $('veredito');
+  v.className = 'veredito ' + (pronto ? 'ok' : semSuporte ? 'sem' : 'falta');
+  v.textContent = pronto ? t('veredito_ok') : semSuporte ? t('veredito_sem') : t('veredito_falta');
+  const lista = $('recursos');
+  lista.replaceChildren();
+  for (const r of recursos) {
+    const li = el('li');
+    li.append(el('span', `chip ${r.estado}`, t('estado_' + r.estado)), el('span', 't', tr(r.titulo)), el('span', 'd', tr(r.detalhe)));
+    if (r.itens.length) {
+      const d = el('details');
+      d.append(el('summary', '', t('ver_pontos', { n: r.itens.length })));
+      const tb = el('table');
+      for (const i of r.itens) {
+        const tr_ = el('tr');
+        tr_.append(el('td', '', i.nome), el('td', '', i.valor == null ? t('nao_achado') : '0x' + i.valor.toString(16)), el('td', '', i.como));
+        tb.append(tr_);
+      }
+      d.append(tb);
+      li.append(d);
+    }
+    lista.append(li);
+  }
+}
+
+// ---------------------------------------------------------------- save
+$('botao-save').addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); $('arquivo-save').click(); } });
+$('arquivo-save').addEventListener('change', async (e) => {
+  const arquivo = e.target.files[0];
+  e.target.value = '';
+  if (!arquivo || !atual) return;
+  $('erro-save').textContent = '';
+  $('nome-save').className = 'nota';
+  $('nome-save').textContent = t('enviando_save');
+  try {
+    await api('/api/save/' + atual.id, arquivo, 'application/octet-stream');
+    atual.tem_save = true;
+    $('nome-save').className = 'nota ok';
+    $('nome-save').textContent = t('save_ok', { n: arquivo.name });
+  } catch (erro) {
+    $('nome-save').textContent = '';
+    $('erro-save').textContent = erro.message;
+  }
+  marcarEtapas();
+});
+
+// ---------------------------------------------------------------- gerar pacote
+$('gerar').addEventListener('click', async () => {
+  if (!atual) return;
+  const aviso = $('resultado-pacote');
+  if (!$('nome-pacote').value.trim()) {
+    aviso.className = 'aviso erro'; aviso.textContent = t('nome_vazio'); $('nome-pacote').focus(); return;
+  }
+  aviso.className = 'aviso info';
+  aviso.textContent = t('gerando');
+  $('gerar').disabled = true;
+  try {
+    const r = await post('/api/gerar', { id: atual.id, nome: $('nome-pacote').value });
+    aviso.textContent = '';
+    await carregarPacotes();
+    abrirPacote(r.pacote, atual.pronto ? t('gerado_ok') : t('gerado_falta'));
+  } catch (erro) {
+    aviso.className = 'aviso erro';
+    aviso.textContent = erro.message;
+  } finally {
+    $('gerar').disabled = false;
+  }
+});
+
+// ---------------------------------------------------------------- pacotes
+async function carregarPacotes() {
+  pacotes = (await api('/api/pacotes').catch(() => ({ pacotes: [] }))).pacotes;
+  desenharPacotes();
+  vigiar();
+}
+
+function resumoTeste(tt) {
+  if (!tt || !tt.cenarios) return { classe: '', texto: t('nunca_testado') };
+  const total = tt.cenarios.length;
+  const passou = tt.cenarios.filter((c) => c.estado === 'passou').length;
+  const falhou = tt.cenarios.filter((c) => c.estado === 'falhou').length;
+  if (tt.rodando) return { classe: 'rodando', texto: t('testando', { n: passou + falhou, t: total }) };
+  return { classe: passou === total ? 'ok' : 'erro', texto: t('resumo', { p: passou, t: total }) };
+}
+
+function desenharPacotes() {
+  const lista = $('pacotes');
+  lista.replaceChildren();
+  if (!pacotes.length) { lista.append(el('li', 'vazio', t('sem_pacotes'))); return; }
+  for (const p of pacotes) {
+    const li = el('li');
+    const b = el('button', 'pacote');
+    b.style.setProperty('--cor', corDe(p.codigo));
+    b.setAttribute('aria-current', String(p.nome === selecionado));
+    const r = resumoTeste(p.teste);
+    const estado = el('span', 'linha-estado');
+    estado.append(el('span', 'ponto ' + r.classe), r.texto);
+    b.append(el('span', 'faixa'), el('span', 'nome', p.nome), estado);
+    b.addEventListener('click', () => abrirPacote(p.nome));
+    li.append(b);
+    lista.append(li);
+  }
+}
+
+function mostrarFicha(p) {
+  $('ficha').style.setProperty('--cor', corDe(p.codigo));
+  $('pac-nome').textContent = p.nome;
+  const info = $('pac-info');
+  info.replaceChildren();
+  const jogo = p.jogo ? t('base_jogo', { j: p.jogo, l: p.idioma ? ' (' + p.idioma + ')' : '' }) : '';
+  info.append(jogo + (p.tem_save ? t('com_save') : t('sem_save_pac')), el('code', '', p.pasta || ''));
+  mostrarVelocidade(p.velocidade || 3);
+  mostrarTeste(p.teste);
+}
+
+function abrirPacote(nome, mensagem) {
+  const p = pacotes.find((x) => x.nome === nome);
+  if (!p) return;
+  selecionado = nome;
+  mostrarVista('pacote');
+  desenharPacotes();
+  const aviso = $('pac-aviso');
+  aviso.className = mensagem ? 'aviso ok' : 'aviso';
+  aviso.textContent = mensagem || '';
+  fecharConfirmacao();
+  mostrarFicha(p);
+  window.scrollTo({ top: 0 });
+}
+
+// ---------------------------------------------------------------- velocidade do jogo
+function mostrarVelocidade(atualVel, mensagem) {
+  const grupo = $('vel');
+  grupo.replaceChildren();
+  for (const v of [1, 2, 3, 4, 5]) {
+    const b = el('button', '', `${v}x`);
+    b.type = 'button';
+    b.setAttribute('role', 'radio');
+    b.setAttribute('aria-checked', String(v === atualVel));
+    b.tabIndex = v === atualVel ? 0 : -1;
+    b.title = v === 1 ? t('vel_titulo1') : t('vel_titulo', { v });
+    b.addEventListener('click', () => escolherVelocidade(v));
+    b.addEventListener('keydown', (e) => {
+      const passo = { ArrowRight: 1, ArrowUp: 1, ArrowLeft: -1, ArrowDown: -1 }[e.key];
+      if (!passo) return;
+      e.preventDefault();
+      const novo = Math.min(5, Math.max(1, atualVel + passo));
+      if (novo !== atualVel) escolherVelocidade(novo, true);
+    });
+    grupo.append(b);
+  }
+  const nota = $('vel-nota');
+  nota.className = mensagem ? 'nota ok' : 'nota';
+  nota.textContent = mensagem || t('vel_nota');
+}
+async function escolherVelocidade(valor, focar) {
+  if (!selecionado) return;
+  try {
+    const r = await post('/api/velocidade', { pacote: selecionado, valor });
+    const p = pacotes.find((x) => x.nome === selecionado);
+    if (p) p.velocidade = r.velocidade;
+    mostrarVelocidade(r.velocidade, t('vel_ok', { v: r.velocidade }));
+    if (focar) $('vel').querySelector('[aria-checked="true"]').focus();
+  } catch (erro) {
+    $('vel-nota').className = 'nota';
+    $('vel-nota').textContent = erro.message;
+  }
+}
+
+// ---------------------------------------------------------------- apagar pacote
+function fecharConfirmacao() {
+  $('confirmar').hidden = true;
+  $('apagar').hidden = false;
+  $('apagar-erro').textContent = '';
+}
+$('apagar').addEventListener('click', () => {
+  const [antes, depois] = t('confirmar_apagar').split('{n}');
+  $('confirmar-texto').replaceChildren(antes, el('strong', '', selecionado), depois || '');
+  $('apagar').hidden = true;
+  $('confirmar').hidden = false;
+  $('apagar-erro').textContent = '';
+  $('apagar-nao').focus();
+});
+$('apagar-nao').addEventListener('click', () => { fecharConfirmacao(); $('apagar').focus(); });
+$('confirmar').addEventListener('keydown', (e) => { if (e.key === 'Escape') { fecharConfirmacao(); $('apagar').focus(); } });
+$('apagar-sim').addEventListener('click', async () => {
+  const nome = selecionado;
+  $('apagar-sim').disabled = true;
+  $('apagar-sim').textContent = t('apagando');
+  try {
+    await post('/api/apagar', { pacote: nome });
+    fecharConfirmacao();
+    await carregarPacotes();
+    mostrarVista('novo');
+    $('resultado-pacote').textContent = '';
+    avisoTopo(t('apagado', { n: nome }));
+  } catch (erro) {
+    $('apagar-erro').textContent = erro.message;
+  } finally {
+    $('apagar-sim').disabled = false;
+    $('apagar-sim').textContent = t('apagar_sim');
+  }
+});
+function avisoTopo(texto) {
+  const a = $('aviso-topo');
+  a.textContent = texto;
+  clearTimeout(avisoTopo.t);
+  avisoTopo.t = setTimeout(() => { a.textContent = ''; }, 6000);
+}
+
+$('pac-local').addEventListener('click', () => abrir(selecionado, 'local'));
+$('pac-pasta').addEventListener('click', () => abrir(selecionado, 'pasta'));
+$('testar').addEventListener('click', () => testar(selecionado));
+
+async function abrir(pacote, acao) {
+  if (!pacote) return;
+  const aviso = $('pac-aviso');
+  try {
+    await post('/api/abrir', { pacote, acao });
+    aviso.className = 'aviso info';
+    aviso.textContent = acao === 'local' ? t('abrindo_local') : '';
+  } catch (erro) {
+    aviso.className = 'aviso erro';
+    aviso.textContent = erro.message;
+  }
+}
+
+async function testar(pacote) {
+  if (!pacote) return;
+  try {
+    const estado = await post('/api/testar', { pacote });
+    const p = pacotes.find((x) => x.nome === pacote);
+    if (p) p.teste = estado;
+    if (selecionado === pacote) mostrarTeste(estado);
+    desenharPacotes();
+    vigiar();
+  } catch (erro) {
+    $('pac-aviso').className = 'aviso erro';
+    $('pac-aviso').textContent = erro.message;
+  }
+}
+
+// Os testes rodam no servidor, um por pacote, vários ao mesmo tempo; trocar de tela não para nenhum.
+function vigiar() {
+  if (vigia) return;
+  vigia = setInterval(async () => {
+    const rodando = pacotes.filter((p) => p.teste && p.teste.rodando);
+    if (!rodando.length) { clearInterval(vigia); vigia = null; return; }
+    await Promise.all(rodando.map(async (p) => {
+      const estado = await api('/api/teste/' + encodeURIComponent(p.nome)).catch(() => null);
+      if (!estado || !estado.cenarios) return;
+      p.teste = estado;
+      if (selecionado === p.nome) mostrarTeste(estado);
+    }));
+    desenharPacotes();
+  }, 3000);
+}
+
+function mostrarTeste(estado) {
+  const tem = !!(estado && estado.cenarios);
+  $('teste-vazio').hidden = tem;
+  $('teste').hidden = !tem;
+  $('testar').disabled = !!(estado && estado.rodando);
+  $('testar').textContent = estado && estado.rodando ? t('rodando') : tem ? t('rodar_de_novo') : t('rodar');
+  if (!tem) return;
+  $('placar').replaceChildren(...estado.cenarios.map((c) => el('span', c.estado)));
+  const total = estado.cenarios.length;
+  const conta = (s) => estado.cenarios.filter((c) => c.estado === s).length;
+  const texto = $('placar-texto');
+  texto.replaceChildren();
+  const extra = [conta('falhou') && t('falharam', { n: conta('falhou') }), conta('pulado') && t('pulados', { n: conta('pulado') }),
+    estado.rodando && t('na_fila', { n: conta('pendente') })].filter(Boolean).join(', ');
+  texto.append(el('strong', '', t('passaram', { p: conta('passou'), t: total })), extra ? `. ${extra}.` : '.');
+  const lista = $('cenarios');
+  lista.replaceChildren();
+  for (const c of estado.cenarios) {
+    const li = el('li');
+    li.append(el('span', `chip ${c.estado}`, t('cen_' + c.estado)), el('span', '', tr(c.titulo)));
+    if (c.detalhe) li.append(el('span', 'd', tr(c.detalhe)));
+    lista.append(li);
+  }
+}
+
+// ---------------------------------------------------------------- doação e página do projeto (abrem no navegador)
+$('doar').addEventListener('click', () => post('/api/link', { url: config.doacao }).catch(() => {}));
+$('projeto').addEventListener('click', () => post('/api/link', { url: config.projeto }).catch(() => {}));
+
+// ---------------------------------------------------------------- versão, atualização e volta
+function mostrarVersao() {
+  $('versao-atual').textContent = config.versao === '0.0.0' ? 'dev' : config.versao + (config.versao.startsWith('0.') ? ' beta' : '');
+  $('versao-nova').textContent = atualizacao && atualizacao.tem_atualizacao ? t('nova_disponivel', { v: atualizacao.nova }) : '';
+  const voltar = $('voltar');
+  voltar.hidden = !config.anterior;
+  if (config.anterior) voltar.textContent = t('voltar_link', { v: config.anterior });
+}
+
+async function procurarAtualizacao(manual) {
+  const botao = $('procurar');
+  if (manual) { botao.textContent = t('procurando'); botao.disabled = true; }
+  try {
+    atualizacao = await api('/api/atualizacao');
+    config.anterior = atualizacao.anterior;
+    mostrarVersao();
+    if (atualizacao.tem_atualizacao && (manual || !atualizacao.ignorada)) abrirAtualizar();
+    else if (manual) avisoVersao(atualizacao.erro ? t('sem_rede') : t('em_dia'));
+  } catch (e) {
+    if (manual) avisoVersao(t('sem_rede'));
+  } finally {
+    botao.textContent = t('procurar'); botao.disabled = false;
+  }
+}
+function avisoVersao(texto) {
+  const b = $('procurar');
+  b.textContent = texto;
+  clearTimeout(avisoVersao.t);
+  avisoVersao.t = setTimeout(() => { b.textContent = t('procurar'); }, 5000);
+}
+$('procurar').addEventListener('click', () => procurarAtualizacao(true));
+
+function abrirAtualizar() {
+  const j = $('j-atualizar');
+  $('j-atualizar-titulo').textContent = t('atualizacao_titulo', { v: atualizacao.nova });
+  $('j-atualizar-texto').textContent = t('atualizacao_texto', { a: config.versao });
+  const notas = $('j-atualizar-notas');
+  notas.textContent = (atualizacao.notas || '').trim();
+  notas.hidden = !notas.textContent;
+  $('j-atualizar-progresso').hidden = true;
+  $('j-atualizar-erro').textContent = '';
+  $('j-atualizar-sim').disabled = false; $('j-atualizar-nao').disabled = false;
+  if (!j.open) j.showModal();
+  $('j-atualizar-sim').focus();
+}
+// "Cancelar" é "agora não": o app pergunta de novo na próxima vez que abrir. Só a versão de onde a pessoa voltou
+// (Voltar para a versão anterior) deixa de ser oferecida sozinha.
+$('j-atualizar-nao').addEventListener('click', () => $('j-atualizar').close());
+$('j-atualizar').addEventListener('cancel', (e) => { if ($('j-atualizar-sim').disabled) e.preventDefault(); });
+$('j-atualizar-sim').addEventListener('click', async () => {
+  $('j-atualizar-sim').disabled = true; $('j-atualizar-nao').disabled = true;
+  $('j-atualizar-erro').textContent = '';
+  $('j-atualizar-progresso').hidden = false;
+  try {
+    await post('/api/atualizar');
+    acompanharAtualizacao();
+  } catch (erro) {
+    falhaAtualizar(erro.message);
+  }
+});
+function falhaAtualizar(msg) {
+  $('j-atualizar-erro').textContent = msg;
+  $('j-atualizar-progresso').hidden = true;
+  $('j-atualizar-sim').disabled = false; $('j-atualizar-nao').disabled = false;
+}
+function acompanharAtualizacao() {
+  const passo = async () => {
+    const e = await api('/api/atualizacao/estado').catch(() => null);
+    if (!e) return setTimeout(passo, 800);
+    $('j-atualizar-barra').style.width = (e.fase === 'baixando' ? e.progresso : e.fase === 'pronto' ? 100 : 95) + '%';
+    if (e.fase === 'erro') return falhaAtualizar(tr(e.erro));
+    if (e.fase === 'pronto') return reiniciarApp('j-atualizar-fase', t('fase_pronto'), t('fase_pronto_manual'));
+    $('j-atualizar-fase').textContent = t('fase_' + e.fase, { p: e.progresso });
+    setTimeout(passo, 500);
+  };
+  passo();
+}
+async function reiniciarApp(alvo, textoAuto, textoManual) {
+  const r = await post('/api/reiniciar').catch(() => ({ reiniciando: false }));
+  $(alvo).textContent = r.reiniciando ? textoAuto : textoManual;
+}
+
+$('voltar').addEventListener('click', () => {
+  $('j-voltar-titulo').textContent = t('voltar_titulo', { v: config.anterior });
+  $('j-voltar-texto').textContent = t('voltar_texto', { v: config.anterior, a: config.versao });
+  $('j-voltar-sim').textContent = t('voltar_sim', { v: config.anterior });
+  $('j-voltar-erro').textContent = '';
+  $('j-voltar-sim').disabled = false;
+  $('j-voltar').showModal();
+  $('j-voltar-nao').focus();
+});
+$('j-voltar-nao').addEventListener('click', () => $('j-voltar').close());
+$('j-voltar-sim').addEventListener('click', async () => {
+  $('j-voltar-sim').disabled = true; $('j-voltar-nao').disabled = true;
+  try {
+    const r = await post('/api/voltar');
+    const auto = t('voltado', { v: r.versao });
+    $('j-voltar-erro').className = 'aviso info';
+    await reiniciarApp('j-voltar-erro', auto, t('fase_pronto_manual'));
+  } catch (erro) {
+    $('j-voltar-erro').className = 'aviso erro';
+    $('j-voltar-erro').textContent = erro.message;
+    $('j-voltar-sim').disabled = false; $('j-voltar-nao').disabled = false;
+  }
+});
+
+// ---------------------------------------------------------------- início
+(async function iniciar() {
+  try { config = Object.assign(config, await api('/api/config')); } catch (e) { /* segue com o padrão */ }
+  lang = I18N[config.idioma] ? config.idioma : 'en';
+  aplicarTextos();
+  etiquetaVazia();
+  marcarEtapas();
+  mostrarVersao();
+  await carregarPacotes();
+  procurarAtualizacao(false);
+})();
+</script>
+</body>
+</html>

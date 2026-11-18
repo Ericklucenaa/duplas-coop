@@ -1,0 +1,178 @@
+{
+"absentFlags": [
+"gAbsentBattlerFlags",
+0
+],
+"activeBattler": [
+"gActiveBattler",
+0
+],
+"attacker": [
+"gBattlerAttacker",
+0
+],
+"battleBufferA": [
+"gBattleBufferA",
+0
+],
+"battleBufferB": [
+"gBattleBufferB",
+0
+],
+"battleCloseParty": [
+"PlayerBufferExecCompleted",
+0
+],
+"battleEnemyCount": [
+"CreateNPCTrainerParty",
+0
+],
+"battleMons": [
+"gBattleMons",
+0
+],
+"battleOutcome": [
+"gBattleOutcome",
+0
+],
+"battleReplenish": [
+"BattleMainCB2",
+0
+],
+"battleSkipRoutine": [
+"SetWildMonHeldItem",
+0
+],
+"battleTypeFlags": [
+"gBattleTypeFlags",
+0
+],
+"battlerPartyIndexes": [
+"gBattlerPartyIndexes",
+0
+],
+"battlescriptPtr": [
+"gBattlescriptCurrInstr",
+0
+],
+"cb2EndWildBattle": [
+"CB2_EndWildBattle",
+0
+],
+"cb2InitBattle": [
+"CB2_InitBattle",
+0
+],
+"cb2Overworld": [
+"CB2_Overworld",
+0
+],
+"commandsTable": [
+"gBattleScriptingCommandsTable",
+0
+],
+"controllerFuncs": [
+"gBattlerControllerFuncs",
+0
+],
+"controllersTable": [
+"sPlayerBufferCommands",
+0
+],
+"ctrlActionInput": [
+"HandleInputChooseAction",
+0
+],
+"ctrlMoveInput": [
+"HandleInputChooseMove",
+0
+],
+"ctrlRunCommand": [
+"PlayerBufferRunCommand",
+0
+],
+"ctrlTargetInput": [
+"HandleInputChooseTarget",
+0
+],
+"encounterKindHook": [
+"TryGenerateWildMon",
+0
+],
+"enemyParty": [
+"gEnemyParty",
+0
+],
+"enemyPartyCount": [
+"gEnemyPartyCount",
+0
+],
+"fishingHook": [
+"GenerateFishingEncounter",
+0
+],
+"gMain": [
+"gMain",
+0
+],
+"itemEffect": [
+"ExecuteTableBasedItemEffect",
+0
+],
+"itemsTable": [
+"gItems",
+0
+],
+"party": [
+"gPlayerParty",
+0
+],
+"partyCount": [
+"gPlayerPartyCount",
+0
+],
+"partyMenuHook": [
+"BeginEvolutionScene",
+0
+],
+"partyOtCheck": [
+"IsTradedMon",
+0
+],
+"readKeysR1": [
+"ReadKeys",
+6
+],
+"removeBagItem": [
+"RemoveBagItem",
+0
+],
+"rngValue": [
+"gRngValue",
+0
+],
+"saveBlock1Ptr": [
+"gSaveBlock1Ptr",
+0
+],
+"saveBlock2Ptr": [
+"gSaveBlock2Ptr",
+0
+],
+"storagePtr": [
+"gPokemonStoragePtr",
+0
+],
+"target": [
+"gBattlerTarget",
+0
+],
+"textController": [
+"CompleteOnInactiveTextPrinter2",
+0
+],
+"wildHeaders": [
+"gWildMonHeaders",
+0
+]
+}

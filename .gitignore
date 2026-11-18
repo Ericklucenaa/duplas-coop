@@ -1,0 +1,24 @@
+# Jogos e saves nunca vão para o repositório (Duplas não inclui nenhum jogo)
+*.gba
+*.GBA
+*.sav
+*.ss[0-9]
+*.sgm
+# dados de quem usa
+pacotes/
+ferramenta/trabalho/
+tests/artifacts/
+demo/
+preferencias.json
+versoes/
+.atualizacao/
+# emulador (vai só nas releases) e saídas de build
+tools/mgba-dev/
+build-app/build/
+build-app/Duplas/
+build-app/dist/
+release/
+Duplas.exe
+# Python
+__pycache__/
+.pytest_cache/

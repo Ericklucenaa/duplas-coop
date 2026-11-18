@@ -1,0 +1,3387 @@
+{
+ "familias": {
+  "FRLG": {
+   "referencia": [
+    "refer\u00eancia 1: 44 pontos",
+    "refer\u00eancia 2: 44 pontos",
+    "refer\u00eancia 3: 44 pontos"
+   ],
+   "ancoras": {
+    "absentFlags": {
+     "referencia": 33701232,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "c00040192427c15f206809182048",
+       "vale": "11111111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "0e4a2624285f4018c07810700c4a",
+       "vale": "01111111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "4946694801764176714a11707148",
+       "vale": "11011111011111",
+       "ldr": 12
+      }
+     ]
+    },
+    "activeBattler": {
+     "referencia": 33700804,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "15d023e00023934220da064e074d",
+       "vale": "11111111110111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "c43b0202002393420bda074e074d",
+       "vale": "11111111110111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "c00040192427c15f206809183c48",
+       "vale": "11111111111111",
+       "ldr": 12
+      }
+     ]
+    },
+    "attacker": {
+     "referencia": 33701227,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "c00040192422815e206809183748",
+       "vale": "11111111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "1348006804210840002841d1114a",
+       "vale": "01111111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "0c330234013a002af3da0021874a",
+       "vale": "11111111111111",
+       "ldr": 12
+      }
+     ]
+    },
+    "battleBufferA": {
+     "referencia": 33696708,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "012d15d023e00023934220da064e",
+       "vale": "11111111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "11680068014000295bd160021749",
+       "vale": "11111111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "c83b02025ce4250800b50c4a0c490d48037898004018116800680140002919d00948",
+       "vale": "1111111111010101111111111111111111",
+       "ldr": 32
+      },
+      {
+       "tipo": "literal",
+       "bytes": "c83b0202cce4250800b50c4a0c490d48037898004018116800680140002919d00948",
+       "vale": "1111111111010101111111111111111111",
+       "ldr": 32
+      },
+      {
+       "tipo": "literal",
+       "bytes": "c83b0202ace4250800b50c4a0c490d48037898004018116800680140002919d00948",
+       "vale": "1111111111010101111111111111111111",
+       "ldr": 32
+      }
+     ]
+    },
+    "battleBufferB": {
+     "referencia": 33698756,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "0202c43b0202002393420bda074e",
+       "vale": "11111111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "0202703d02026e3d020260020449",
+       "vale": "11111111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "087878434246831800224e4e4f4d",
+       "vale": "11111111110111",
+       "ldr": 12
+      }
+     ]
+    },
+    "battleCloseParty": {
+     "referencia": 134406972,
+     "codigo": true,
+     "assinaturas": [
+      {
+       "tipo": "codigo",
+       "bytes": "e04f0003c43b0202b5e302080540020210b581b00e490f4c2078800040180e4901600e4800680221",
+       "vale": "0111111111111111111101011111110111011111",
+       "deslocamento": 16
+      },
+      {
+       "tipo": "codigo",
+       "bytes": "e04f0003c43b0202c9e302080540020210b581b00e490f4c2078800040180e4901600e4800680221",
+       "vale": "0111111111111111111101011111110111011111",
+       "deslocamento": 16
+      }
+     ],
+     "amostra": {
+      "bytes": "10b581b00e490f4c2078800040180e4901600e4800680221084000281ad0dcf753f869460870022004216a46dff740fb",
+      "vale": "111101011111110111011111111111000011111111110000"
+     }
+    },
+    "battleEnemyCount": {
+     "referencia": 134288096,
+     "codigo": true,
+     "assinaturas": [
+      {
+       "tipo": "codigo",
+       "bytes": "f0bc01bc00470000c02b02029dfd0008f0b557464e464546e0b489b004900904090c059100208146",
+       "vale": "1111111111111111111111111111111111111111",
+       "deslocamento": 16
+      },
+      {
+       "tipo": "codigo",
+       "bytes": "f0bc01bc00470000c02b0202b1fd0008f0b557464e464546e0b489b004900904090c059100208146",
+       "vale": "1111111111111111111111111111111111111111",
+       "deslocamento": 16
+      }
+     ],
+     "amostra": {
+      "bytes": "f0b557464e464546e0b489b004900904090c0591002081468020c000814201d10020d3e10b4800680b49084005998900",
+      "vale": "111111111111111111111111111111111111011101111111"
+     }
+    },
+    "battleMons": {
+     "referencia": 33700836,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "f872002391462348804610322248",
+       "vale": "11111101111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "00239146204fb8464c4610341f48",
+       "vale": "11110111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "b2467f2849d00025644658234b4a",
+       "vale": "11111111111111",
+       "ldr": 12
+      }
+     ]
+    },
+    "battleOutcome": {
+     "referencia": 33701514,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "82460904090c324a102010703248",
+       "vale": "11111101111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "0047905000030160000000b50448",
+       "vale": "11111111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "802149020840002812d00d4a0d49",
+       "vale": "11111111110111",
+       "ldr": 12
+      }
+     ]
+    },
+    "battleReplenish": {
+     "referencia": 134287616,
+     "codigo": true,
+     "assinaturas": [
+      {
+       "tipo": "codigo",
+       "bytes": "08bc9846f0bc01bc00470000823e020200b581b0f5f72afdf5f74efdf1f76cfe5ff0def966f030fa",
+       "vale": "1111111111111111111100000000000000000000",
+       "deslocamento": 16
+      },
+      {
+       "tipo": "literal",
+       "bytes": "98f8000600282ed00a4a0a49086810600a4808600a48",
+       "vale": "1111111101011111011111",
+       "ldr": 20
+      },
+      {
+       "tipo": "literal",
+       "bytes": "7cfc000600282ed00a4a0a49086810600a4808600a48",
+       "vale": "1111111101011111011111",
+       "ldr": 20
+      },
+      {
+       "tipo": "literal",
+       "bytes": "03205bf037fa05205cf06cf805490648086006490648",
+       "vale": "1100001100000101110111",
+       "ldr": 20
+      }
+     ],
+     "amostra": {
+      "bytes": "00b581b0f5f72afdf5f74efdf1f76cfe5ff0def966f030fa1148818d02200840002819d00f4800688021490208400028",
+      "vale": "111100000000000000000000011111111111011111111111"
+     }
+    },
+    "battleSkipRoutine": {
+     "referencia": 134497268,
+     "codigo": true,
+     "assinaturas": [
+      {
+       "tipo": "codigo",
+       "bytes": "c82a0202044002022cca3f08181d020230b51548006815490840002832d100f061fd0004000c6421",
+       "vale": "1111111111111111110111011111110000111111",
+       "deslocamento": 16
+      },
+      {
+       "tipo": "codigo",
+       "bytes": "c82a0202044002029cca3f08181d020230b51548006815490840002832d100f061fd0004000c6421",
+       "vale": "1111111111111111110111011111110000111111",
+       "deslocamento": 16
+      },
+      {
+       "tipo": "codigo",
+       "bytes": "c82a020204400202d8c83f08181d020230b51548006815490840002832d100f061fd0004000c6421",
+       "vale": "1111111111111111110111011111110000111111",
+       "deslocamento": 16
+      }
+     ],
+     "amostra": {
+      "bytes": "30b51548006815490840002832d100f061fd0004000c6421a0f13af90004050c0f4c201c0b210022fbf7e4fb0004000c",
+      "vale": "110111011111110000111111000011110111111100001111"
+     }
+    },
+    "battleTypeFlags": {
+     "referencia": 33696588,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "013301319142f7db93420ed1094a",
+       "vale": "11111111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "4aff03b070bc01bc004700b50d48",
+       "vale": "11111111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "0202542b0202dc3d020230b50448",
+       "vale": "11111111111111",
+       "ldr": 12
+      }
+     ]
+    },
+    "battlerPartyIndexes": {
+     "referencia": 33700814,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "002082460a498c460a4f80460a4e",
+       "vale": "11110111011111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "06490420087010bc01bc0047e04f",
+       "vale": "01111111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "201c2d2132f0faf9002847d10248",
+       "vale": "11110000111111",
+       "ldr": 12
+      }
+     ]
+    },
+    "battlescriptPtr": {
+     "referencia": 33701236,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "e83f0202823e020214480270144f",
+       "vale": "11111111011111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "1fd00a490b4c2078087000205ff0abfd094908700949",
+       "vale": "1101011111110000011111",
+       "ldr": 20
+      },
+      {
+       "tipo": "literal",
+       "bytes": "0648084000280fd01ff022fe9b2040005cf0e4fd0249",
+       "vale": "0111111100001111000011",
+       "ldr": 20
+      }
+     ]
+    },
+    "cb2EndWildBattle": {
+     "referencia": 134740800,
+     "codigo": true,
+     "assinaturas": [
+      {
+       "tipo": "codigo",
+       "bytes": "affd01bc00470000f0300003f9fa070800b581b0694600200880a021c904094a684664f107f80020",
+       "vale": "1111111111111111111111111111110111000011",
+       "deslocamento": 16
+      },
+      {
+       "tipo": "literal",
+       "bytes": "01bc0047f0300003fd20eb084c2b020200b5eaf7d7f8e9f7eff8dcf7f3ff0b490b48",
+       "vale": "1111111111111111110000000000000111",
+       "ldr": 32
+      },
+      {
+       "tipo": "literal",
+       "bytes": "01bc0047f03000034d0f0a084c2b020200b5eaf795f8e9f7adf8dcf7b1ff0d490d48",
+       "vale": "1111111111111111110000000000000111",
+       "ldr": 32
+      },
+      {
+       "tipo": "literal",
+       "bytes": "9846f0bc01bc004700b51f491f48",
+       "vale": "11111111110111",
+       "ldr": 12
+      },
+      {
+       "tipo": "codigo",
+       "bytes": "affd01bc00470000f03000030dfb070800b581b0694600200880a021c904094a684664f135f80020",
+       "vale": "1111111111111111111111111111110111000011",
+       "deslocamento": 16
+      },
+      {
+       "tipo": "literal",
+       "bytes": "04e000000850000300f002f801bc004700b5eaf7f9f8e9f711f9ddf715f80a490a48",
+       "vale": "1111111100001111110000000000000111",
+       "ldr": 32
+      },
+      {
+       "tipo": "literal",
+       "bytes": "01bc0047f030000355fb07084c2b020200b5eaf7d7f8e9f7eff8dcf7f3ff0b490b48",
+       "vale": "1111111111111111110000000000000111",
+       "ldr": 32
+      },
+      {
+       "tipo": "literal",
+       "bytes": "01bc0047f0300003610f0a084c2b020200b5eaf795f8e9f7adf8dcf7b1ff0d490d48",
+       "vale": "1111111111111111110000000000000111",
+       "ldr": 32
+      },
+      {
+       "tipo": "codigo",
+       "bytes": "affd01bc00470000f0300003e1fa070800b581b0694600200880a021c904094a684664f139f80020",
+       "vale": "1111111111111111111111111111110111000011",
+       "deslocamento": 16
+      },
+      {
+       "tipo": "literal",
+       "bytes": "04e000000850000300f002f801bc004700b5eaf70ff9e9f727f9ddf72bf80a490a48",
+       "vale": "1111111100001111110000000000000111",
+       "ldr": 32
+      },
+      {
+       "tipo": "literal",
+       "bytes": "01bc0047f030000329fb07084c2b020200b5eaf7edf8e9f705f9ddf709f80b490b48",
+       "vale": "1111111111111111110000000000000111",
+       "ldr": 32
+      },
+      {
+       "tipo": "literal",
+       "bytes": "01bc0047f0300003350f0a084c2b020200b5eaf7abf8e9f7c3f8dcf7c7ff0d490d48",
+       "vale": "1111111111111111110000000000000111",
+       "ldr": 32
+      }
+     ],
+     "amostra": {
+      "bytes": "00b581b0694600200880a021c904094a684664f107f80020802187f7c5fb0648007800f0b5fa01280ad1044880f7eafc",
+      "vale": "111111111111110111000011110000011100001111010000"
+     }
+    },
+    "cb2InitBattle": {
+     "referencia": 134282652,
+     "codigo": true,
+     "assinaturas": [
+      {
+       "tipo": "codigo",
+       "bytes": "fff7f8fa00e00124201c10bc02bc084710b53cf081f91ef04bf924f007f825f093fd074c20684021",
+       "vale": "0000111111111111110000000000000000011111",
+       "deslocamento": 16
+      },
+      {
+       "tipo": "literal",
+       "bytes": "0cfe2068f1f77ffc002020600448",
+       "vale": "11110000111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "51f04bf90006000e01280dd1abf00bffd6f7bffe0648",
+       "vale": "0000111111110000000011",
+       "ldr": 20
+      },
+      {
+       "tipo": "literal",
+       "bytes": "e9ff094980221201101c08800748",
+       "vale": "11011111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "3afe2068f1f77ffc002020600448",
+       "vale": "11110000111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "51f04bf90006000e01280dd1abf03dffd6f7bffe0648",
+       "vale": "0000111111110000000011",
+       "ldr": 20
+      },
+      {
+       "tipo": "literal",
+       "bytes": "28fe2068f1f77ffc002020600448",
+       "vale": "11110000111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "51f04bf90006000e01280dd1abf03fffd6f7d5fe0648",
+       "vale": "0000111111110000000011",
+       "ldr": 20
+      },
+      {
+       "tipo": "literal",
+       "bytes": "ffff094980221201101c08800748",
+       "vale": "11011111111111",
+       "ldr": 12
+      }
+     ],
+     "amostra": {
+      "bytes": "10b53cf081f91ef04bf924f007f825f093fd074c20684021084000280ed0fdf739fa0448f0f7c0fb03490020087027e0",
+      "vale": "110000000000000000011111111111000001000001111111"
+     }
+    },
+    "cb2Overworld": {
+     "referencia": 134571444,
+     "codigo": true,
+     "assinaturas": [
+      {
+       "tipo": "codigo",
+       "bytes": "0047000000b5fff7e5ff01bc0047000010b50948c079c009041c002c02d00020aaf796f8fff7d6ff",
+       "vale": "1111110000111111110111111111111100000000",
+       "deslocamento": 16
+      },
+      {
+       "tipo": "literal",
+       "bytes": "0000905e000310b5094c61680948",
+       "vale": "11111111011111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "13f073f9094909480860094900200860094800f0f2fb00f0c4f90748fff7afff0748",
+       "vale": "0000010111011111010000000001000011",
+       "ldr": 32
+      },
+      {
+       "tipo": "literal",
+       "bytes": "0b490c480860694600200870684600f0b7fbbbf039fe00f087f90748fff772ff0648",
+       "vale": "0101111111111100000000000001000011",
+       "ldr": 32
+      },
+      {
+       "tipo": "literal",
+       "bytes": "0b490c480860694600200870684600f0b7fbbbf06bfe00f087f90748fff772ff0648",
+       "vale": "0101111111111100000000000001000011",
+       "ldr": 32
+      },
+      {
+       "tipo": "literal",
+       "bytes": "0b490c480860694600200870684600f0b7fbbbf057fe00f087f90748fff772ff0648",
+       "vale": "0101111111111100000000000001000011",
+       "ldr": 32
+      }
+     ],
+     "amostra": {
+      "bytes": "10b50948c079c009041c002c02d00020aaf796f8fff7d6ff002c01d000f018fa10bc01bc00470000b87a030201490860",
+      "vale": "110111111111111100000000111100001111111111110111"
+     }
+    },
+    "commandsTable": {
+     "referencia": 136642844,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "1203114318680840002806d10b48",
+       "vale": "11111111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "0111010807480068002808d10649",
+       "vale": "11110111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "844f000307480068002808d10649",
+       "vale": "01110111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "1511010807480068002808d10649",
+       "vale": "11110111111111",
+       "ldr": 12
+      }
+     ]
+    },
+    "controllerFuncs": {
+     "referencia": 50352096,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "1948086000221948804600231849",
+       "vale": "01111101111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "0860802040021040002817d0074a",
+       "vale": "11111111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "cc3b020280201040002807d00149",
+       "vale": "11111111111111",
+       "ldr": 12
+      }
+     ]
+    },
+    "ctrlActionInput": {
+     "referencia": 134407224,
+     "codigo": true,
+     "assinaturas": [
+      {
+       "tipo": "codigo",
+       "bytes": "004700003c060202443d0202c43b0202f0b5474680b4164f164c20784202b91c51180d78f91c5218",
+       "vale": "1111111111111111111111010111111111111111",
+       "deslocamento": 16
+      }
+     ],
+     "amostra": {
+      "bytes": "f0b5474680b4164f164c20784202b91c51180d78f91c5218117809020d43012107220123e3f76cfe2078002107220123",
+      "vale": "111111010111111111111111111111111111000011111111"
+     }
+    },
+    "ctrlMoveInput": {
+     "referencia": 134408720,
+     "codigo": true,
+     "assinaturas": [
+      {
+       "tipo": "codigo",
+       "bytes": "f44f00033c060202443d020245200108f0b5474680b481b000208046134e307840021349471805f0",
+       "vale": "0111111111111111111111111111011111011111",
+       "deslocamento": 16
+      },
+      {
+       "tipo": "literal",
+       "bytes": "01600f49104c2078800040180f49",
+       "vale": "11010111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "0e081d491e4a1078800040181d49",
+       "vale": "11010111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "89790e0811482178890009181048",
+       "vale": "11110111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "codigo",
+       "bytes": "f44f00033c060202443d020259200108f0b5474680b481b000208046134e307840021349471805f0",
+       "vale": "0111111111111111111111111111011111011111",
+       "deslocamento": 16
+      },
+      {
+       "tipo": "literal",
+       "bytes": "9d790e0811482178890009181048",
+       "vale": "11110111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "75790e0811482178890009181048",
+       "vale": "11110111111111",
+       "ldr": 12
+      }
+     ],
+     "amostra": {
+      "bytes": "f0b5474680b481b000208046134e307840021349471805f04ff81248c18d0125281c0840002800d1eae0052043f046fc",
+      "vale": "111111111111011111011100000111111111111111110000"
+     }
+    },
+    "ctrlRunCommand": {
+     "referencia": 134407092,
+     "codigo": true,
+     "assinaturas": [
+      {
+       "tipo": "codigo",
+       "bytes": "10bc01bc00470000c83b02025ce4250800b50c4a0c490d48037898004018116800680140002919d0",
+       "vale": "1111111111111111110101011111111111111111",
+       "deslocamento": 16
+      },
+      {
+       "tipo": "literal",
+       "bytes": "0000054906480078800040180549",
+       "vale": "11010111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "02080540020210b581b00e490f4c2078800040180e49",
+       "vale": "1111111111010111111111",
+       "ldr": 20
+      },
+      {
+       "tipo": "codigo",
+       "bytes": "10bc01bc00470000c83b0202cce4250800b50c4a0c490d48037898004018116800680140002919d0",
+       "vale": "1111111111111111110101011111111111111111",
+       "deslocamento": 16
+      },
+      {
+       "tipo": "codigo",
+       "bytes": "10bc01bc00470000c83b0202ace4250800b50c4a0c490d48037898004018116800680140002919d0",
+       "vale": "1111111111111111110101011111111111111111",
+       "deslocamento": 16
+      }
+     ],
+     "amostra": {
+      "bytes": "00b50c4a0c490d48037898004018116800680140002919d00948590209180878382811d807480978890009180868b5f1",
+      "vale": "110101011111111111111111011111111111011111111111"
+     }
+    },
+    "ctrlTargetInput": {
+     "referencia": 134407796,
+     "codigo": true,
+     "assinaturas": [
+      {
+       "tipo": "codigo",
+       "bytes": "00470000c43b0202e04f000375e6020830b581b0234968460422b7f1fbfb2248007801210f220123",
+       "vale": "1111111101111111111101111100000111111111",
+       "deslocamento": 16
+      },
+      {
+       "tipo": "literal",
+       "bytes": "e3f706fe20780021e3f702fe05492078800040180449",
+       "vale": "0000111100000111111111",
+       "ldr": 20
+      },
+      {
+       "tipo": "literal",
+       "bytes": "02020649074a1078800040180649",
+       "vale": "11010111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "codigo",
+       "bytes": "00470000c43b0202e04f000389e6020830b581b0234968460422b7f129fc2248007801210f220123",
+       "vale": "1111111101111111111101111100000111111111",
+       "deslocamento": 16
+      },
+      {
+       "tipo": "codigo",
+       "bytes": "00470000c43b0202e04f000389e6020830b581b0234968460422b7f117fc2248007801210f220123",
+       "vale": "1111111101111111111101111100000111111111",
+       "deslocamento": 16
+      }
+     ],
+     "amostra": {
+      "bytes": "30b581b0234968460422b7f1fbfb2248007801210f220123e3f754fd00241f48007800280dd01c480078844204d02006",
+      "vale": "111101111100000111111111000011011111110111111111"
+     }
+    },
+    "encounterKindHook": {
+     "referencia": 134753004,
+     "codigo": true,
+     "assinaturas": [
+      {
+       "tipo": "codigo",
+       "bytes": "08431c2161f1d0fd0006000e02bc0847f0b5474680b4071c0906090e081c1206120e904600260129",
+       "vale": "1111000011111111111111111111111111111111",
+       "deslocamento": 16
+      },
+      {
+       "tipo": "codigo",
+       "bytes": "08431c2161f1fefd0006000e02bc0847f0b5474680b4071c0906090e081c1206120e904600260129",
+       "vale": "1111000011111111111111111111111111111111",
+       "deslocamento": 16
+      },
+      {
+       "tipo": "codigo",
+       "bytes": "08431c2161f102fe0006000e02bc0847f0b5474680b4071c0906090e081c1206120e904600260129",
+       "vale": "1111000011111111111111111111111111111111",
+       "deslocamento": 16
+      }
+     ],
+     "amostra": {
+      "bytes": "f0b5474680b4071c0906090e081c1206120e9046002601290ad0012902dc002903d009e0022803d006e0fff719fe01e0",
+      "vale": "111111111111111111111111111111111111111111000011"
+     }
+    },
+    "enemyParty": {
+     "referencia": 33701932,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "05e00000d63b0202844202020f48",
+       "vale": "11111111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "201c0b210ce00000844202021348",
+       "vale": "11111111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "1448006802210840002806d11248",
+       "vale": "01111111111111",
+       "ldr": 12
+      }
+     ]
+    },
+    "enemyPartyCount": {
+     "referencia": 33701930,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "02bc084700008442020210b50248",
+       "vale": "11111111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "1068414909783630017010684049",
+       "vale": "11011111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "2068464909783630017020684549",
+       "vale": "11011111111111",
+       "ldr": 12
+      }
+     ]
+    },
+    "fishingHook": {
+     "referencia": 134753124,
+     "codigo": true,
+     "assinaturas": [
+      {
+       "tipo": "codigo",
+       "bytes": "c046012008bc9846f0bc02bc0847000070b5061c0806000efff776fe041c2406240ea50070684019",
+       "vale": "1111111111111111111111110000111111111111",
+       "deslocamento": 16
+      },
+      {
+       "tipo": "codigo",
+       "bytes": "53ff012008bc9846f0bc02bc0847000070b5061c0806000efff776fe041c2406240ea50070684019",
+       "vale": "1111111111111111111111110000111111111111",
+       "deslocamento": 16
+      }
+     ],
+     "amostra": {
+      "bytes": "70b5061c0806000efff776fe041c2406240ea50070684019fff7bcfe011c0906090e706828184088221cfff735ff7068",
+      "vale": "111111110000111111111111000011111111111111000011"
+     }
+    },
+    "gMain": {
+     "referencia": 50344176,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "002404701a480470f4f075fee3f1cdf918480470184f",
+       "vale": "1111011100000000011111",
+       "ldr": 20
+      },
+      {
+       "tipo": "literal",
+       "bytes": "01d100f028f801bc004710b50b48",
+       "vale": "11000011111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "0fd13bf1a9f9000600280ad1064c",
+       "vale": "11000011111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "05fa1c480068012802d0002000f09ef819480470194f",
+       "vale": "1101111111110000011111",
+       "ldr": 20
+      },
+      {
+       "tipo": "literal",
+       "bytes": "0fd13bf1dbf9000600280ad1064c",
+       "vale": "11000011111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "f3f91c480068012802d0002000f09ef819480470194f",
+       "vale": "1101111111110000011111",
+       "ldr": 20
+      },
+      {
+       "tipo": "literal",
+       "bytes": "0fd13bf1c7f9000600280ad1064c",
+       "vale": "11000011111111",
+       "ldr": 12
+      }
+     ]
+    },
+    "itemEffect": {
+     "referencia": 134484928,
+     "codigo": true,
+     "assinaturas": [
+      {
+       "tipo": "codigo",
+       "bytes": "ff7ff0ff0ffeffff84472508e83f020210b581b00904090c1206120e1b061b0e0024009400f006f8",
+       "vale": "1111111111111111111111111111111111110000",
+       "deslocamento": 16
+      },
+      {
+       "tipo": "codigo",
+       "bytes": "ff7ff0ff0ffefffff4472508e83f020210b581b00904090c1206120e1b061b0e0024009400f006f8",
+       "vale": "1111111111111111111111111111111111110000",
+       "deslocamento": 16
+      },
+      {
+       "tipo": "codigo",
+       "bytes": "ff7ff0ff0ffeffffd0472508e83f020210b581b00904090c1206120e1b061b0e0024009400f006f8",
+       "vale": "1111111111111111111111111111111111110000",
+       "deslocamento": 16
+      }
+     ],
+     "amostra": {
+      "bytes": "10b581b00904090c1206120e1b061b0e0024009400f006f80006000e01b010bc02bc0847f0b557464e464546e0b48fb0",
+      "vale": "111111111111111111110000111111111111111111111111"
+     }
+    },
+    "itemsTable": {
+     "referencia": 138260520,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "fff7efff0004000c2c2148430249",
+       "vale": "00001111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "0249401802bc0847000028b03d0810b50004000c064c",
+       "vale": "0111111111111111111111",
+       "ldr": 20
+      },
+      {
+       "tipo": "literal",
+       "bytes": "c08910bc02bc0847000028b03d0810b50004000c064c",
+       "vale": "1111111111111111111111",
+       "ldr": 20
+      },
+      {
+       "tipo": "literal",
+       "bytes": "0249401802bc0847000098b03d0810b50004000c064c",
+       "vale": "0111111111111111111111",
+       "ldr": 20
+      },
+      {
+       "tipo": "literal",
+       "bytes": "c08910bc02bc0847000098b03d0810b50004000c064c",
+       "vale": "1111111111111111111111",
+       "ldr": 20
+      },
+      {
+       "tipo": "literal",
+       "bytes": "0249401802bc08470000d4ae3d0810b50004000c064c",
+       "vale": "0111111111111111111111",
+       "ldr": 20
+      },
+      {
+       "tipo": "literal",
+       "bytes": "c08910bc02bc08470000d4ae3d0810b50004000c064c",
+       "vale": "1111111111111111111111",
+       "ldr": 20
+      }
+     ]
+    },
+    "party": {
+     "referencia": 33702532,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "4846017801200840002806d10248",
+       "vale": "11111111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "484601780120084000280dd10548",
+       "vale": "11111111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "1149401801780222114301700f4c",
+       "vale": "01111111111111",
+       "ldr": 12
+      }
+     ]
+    },
+    "partyCount": {
+     "referencia": 33701929,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "0840002800d00ce1def709fd0b480b490968097c0b4a",
+       "vale": "1111111100000101111111",
+       "ldr": 20
+      },
+      {
+       "tipo": "literal",
+       "bytes": "f0d1201c311c6422fff7ceff0349",
+       "vale": "11111111000011",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "9846f0bc02bc0847000010b50248",
+       "vale": "11111111111111",
+       "ldr": 12
+      }
+     ]
+    },
+    "partyMenuHook": {
+     "referencia": 135060904,
+     "codigo": true,
+     "assinaturas": [
+      {
+       "tipo": "codigo",
+       "bytes": "01b0f0bc01bc0047b87a03028442020270b50c1c151c1e1c2404240c2d062d0e3606360e0a480021",
+       "vale": "1111111111111111111111111111111111110111",
+       "deslocamento": 16
+      }
+     ],
+     "amostra": {
+      "bytes": "70b50c1c151c1e1c2404240c2d062d0e3606360e0a480021a9f72cfb0006000e084a81000918c9008918002008818c81",
+      "vale": "111111111111111111110111000011110111111111111111"
+     }
+    },
+    "partyOtCheck": {
+     "referencia": 134496860,
+     "codigo": true,
+     "assinaturas": [
+      {
+       "tipo": "codigo",
+       "bytes": "0020085610bc02bc0847000024de250810b582b0041c07216a46fbf7bffc201c01210022fbf7bafc",
+       "vale": "1111111111111111111111111100001111110000",
+       "deslocamento": 16
+      },
+      {
+       "tipo": "codigo",
+       "bytes": "0020085610bc02bc0847000094de250810b582b0041c07216a46fbf7bffc201c01210022fbf7bafc",
+       "vale": "1111111111111111111111111100001111110000",
+       "deslocamento": 16
+      },
+      {
+       "tipo": "codigo",
+       "bytes": "0020085610bc02bc0847000074de250810b582b0041c07216a46fbf7bffc201c01210022fbf7bafc",
+       "vale": "1111111111111111111111111100001111110000",
+       "deslocamento": 16
+      }
+     ],
+     "amostra": {
+      "bytes": "10b582b0041c07216a46fbf7bffc201c01210022fbf7bafc694600f007f80006000e02b010bc02bc0847000030b50d1c",
+      "vale": "111111111100001111110000110000111111111111111111"
+     }
+    },
+    "readKeysR1": {
+     "referencia": 134219246,
+     "codigo": true,
+     "assinaturas": [
+      {
+       "tipo": "codigo",
+       "bytes": "0003e0300003f030000300b50e4801880e4a101c031c4b400d490a8d181c90434885c88508860a1c",
+       "vale": "1111111111110111011111110111111111111111",
+       "deslocamento": 16
+      }
+     ],
+     "amostra": {
+      "bytes": "0e4a101c031c4b400d490a8d181c90434885c88508860a1c002b14d0908d984211d1508e01385086000400280ed11386",
+      "vale": "011111110111111111111111111111111111111111111111"
+     }
+    },
+    "removeBagItem": {
+     "referencia": 134848984,
+     "codigo": true,
+     "assinaturas": [
+      {
+       "tipo": "codigo",
+       "bytes": "00e0002008bc9846f0bc02bc08470000f0b50004040c09040f0c201c00f0f8fb0006002834d0002c",
+       "vale": "1111111111111111111111111111000011111111",
+       "deslocamento": 16
+      }
+     ],
+     "amostra": {
+      "bytes": "f0b50004040c09040f0c201c00f0f8fb0006002834d0002c32d0201c00f0f0fb0138000600221249400d401801798a42",
+      "vale": "111111111111000011111111111100001111110111111111"
+     }
+    },
+    "rngValue": {
+     "referencia": 50352128,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "fff7d6ff0004001402bc0847044a",
+       "vale": "00001111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "6d4ec641736000000004000c0149",
+       "vale": "01111111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "c2030934f43330300f101d004c4e",
+       "vale": "11111111111111",
+       "ldr": 12
+      }
+     ]
+    },
+    "saveBlock1Ptr": {
+     "referencia": 50352136,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "0024046244620460094800f037f8094809490160094a",
+       "vale": "1111111101000001011111",
+       "ldr": 20
+      },
+      {
+       "tipo": "literal",
+       "bytes": "02bc08470000215a410800b50748",
+       "vale": "11111111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "2c188cf0c6fb012833d10022154f",
+       "vale": "11000011111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "02bc08470000915a410800b50748",
+       "vale": "11111111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "02bc08470000cd58410800b50748",
+       "vale": "11111111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "2c188cf0b0fb012833d10022154f",
+       "vale": "11000011111111",
+       "ldr": 12
+      }
+     ]
+    },
+    "saveBlock2Ptr": {
+     "referencia": 50352140,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "004710b50b480024046244620460094800f037f80948",
+       "vale": "1111011111111101000011",
+       "ldr": 20
+      },
+      {
+       "tipo": "literal",
+       "bytes": "0003124800885086138593851148",
+       "vale": "11011111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "30720420307731e7903d0003f27f002a34d00b4c0b4d",
+       "vale": "1111111111111111110111",
+       "ldr": 20
+      }
+     ]
+    },
+    "storagePtr": {
+     "referencia": 50352144,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "0a48081810600a4808182060094a",
+       "vale": "01111101111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "99f1d2fe26498a460968264f26483a1c99f1cafe254e",
+       "vale": "0000011111010111000011",
+       "ldr": 20
+      },
+      {
+       "tipo": "literal",
+       "bytes": "0302c0d93c08b995080800b50349",
+       "vale": "11111111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "99f100ff26498a460968264f26483a1c99f1f8fe254e",
+       "vale": "0000011111010111000011",
+       "ldr": 20
+      },
+      {
+       "tipo": "literal",
+       "bytes": "030230da3c08cd95080800b50349",
+       "vale": "11111111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "99f1eefe26498a460968264f26483a1c99f1e6fe254e",
+       "vale": "0000011111010111000011",
+       "ldr": 20
+      },
+      {
+       "tipo": "literal",
+       "bytes": "03026cd83c08a195080800b50349",
+       "vale": "11111111111111",
+       "ldr": 12
+      }
+     ]
+    },
+    "target": {
+     "referencia": 33701228,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "c00040192427c15f206809183248",
+       "vale": "11111111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "285f434619684018807810700e4a",
+       "vale": "11111111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "013a002af3da0021874a11708748",
+       "vale": "11111111011111",
+       "ldr": 12
+      }
+     ]
+    },
+    "textController": {
+     "referencia": 134415888,
+     "codigo": true,
+     "assinaturas": [
+      {
+       "tipo": "codigo",
+       "bytes": "0047000018400202c43b0202443d02023c060202f04f000300b50020d2f726fc0004002801d1fdf78dfe01bc0047000010b51048c17980200840002817d10e49",
+       "vale": "1111111111111111111101111111000011111100001111111101111111111111",
+       "deslocamento": 24
+      },
+      {
+       "tipo": "literal",
+       "bytes": "38fe054906480078800040180549",
+       "vale": "11010111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "22fe054906480078800040180549",
+       "vale": "11010111111111",
+       "ldr": 12
+      }
+     ],
+     "amostra": {
+      "bytes": "00b50020d2f726fc0004002801d1fdf78dfe01bc0047000010b51048c17980200840002817d10e490e4a107880004018",
+      "vale": "111100001111110000111111110111111111110101111111"
+     }
+    },
+    "wildHeaders": {
+     "referencia": 141767104,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "30bc02bc0847000070b500241548",
+       "vale": "11111111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "301c0421d6f718f9012843d11649",
+       "vale": "11110000111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "fff7c1ff0006002800d193e00b49",
+       "vale": "00001111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "301c0421d6f72ef9012843d11649",
+       "vale": "11110000111111",
+       "ldr": 12
+      }
+     ]
+    },
+    "controllersTable": {
+     "referencia": 136644764,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "relativo",
+       "base": "ctrlRunCommand",
+       "ldr_delta": 36
+      }
+     ]
+    }
+   },
+   "sem_assinatura": []
+  },
+  "E": {
+   "referencia": [
+    "refer\u00eancia 1: 44 pontos"
+   ],
+   "ancoras": {
+    "absentFlags": {
+     "referencia": 33702416,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "c00040192427c15f206809182048",
+       "vale": "11111111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "0e4a2624285f4018c07810700c4a",
+       "vale": "01111111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "02705b4d5b4e5c4f5c4880465c49",
+       "vale": "11010101011111",
+       "ldr": 12
+      }
+     ]
+    },
+    "activeBattler": {
+     "referencia": 33701988,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "15d023e00023934220da064e074d",
+       "vale": "11111111110111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "64400202002393420bda074e074d",
+       "vale": "11111111110111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "c00040192427c15f206809183c48",
+       "vale": "11111111111111",
+       "ldr": 12
+      }
+     ]
+    },
+    "attacker": {
+     "referencia": 33702411,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "c00040192422815e206809183748",
+       "vale": "11111111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "1348006804210840002841d1114a",
+       "vale": "01111111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "0c330234013a002af3da0021204a",
+       "vale": "11111111111111",
+       "ldr": 12
+      }
+     ]
+    },
+    "battleBufferA": {
+     "referencia": 33697892,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "012d15d023e00023934220da064e",
+       "vale": "11111111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "11680068014000295bd160021749",
+       "vale": "11111111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "6840020228a3320800b50c4a0c490d48037898004018116800680140002919d00948",
+       "vale": "1111111111010101111111111111111111",
+       "ldr": 32
+      }
+     ]
+    },
+    "battleBufferB": {
+     "referencia": 33699940,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "020264400202002393420bda074e",
+       "vale": "11111111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "0202104202020e42020260020449",
+       "vale": "11111111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "087878434246831800224e4e4f4d",
+       "vale": "11111111110111",
+       "ldr": 12
+      }
+     ]
+    },
+    "battleCloseParty": {
+     "referencia": 134575244,
+     "codigo": true,
+     "assinaturas": [
+      {
+       "tipo": "codigo",
+       "bytes": "6440020205750508b9440202cc44020210b581b00e490f4c2078800040180e4901600e4800680221",
+       "vale": "1111111111111111111101011111110111011111",
+       "deslocamento": 16
+      }
+     ],
+     "amostra": {
+      "bytes": "10b581b00e490f4c2078800040180e4901600e4800680221084000281ad0b2f7ddff69460870022004216a46dbf71cff",
+      "vale": "111101011111110111011111111111000011111111110000"
+     }
+    },
+    "battleEnemyCount": {
+     "referencia": 134448616,
+     "codigo": true,
+     "assinaturas": [
+      {
+       "tipo": "codigo",
+       "bytes": "c7f7b2ff30bc01bc0047000061670308f0b557464e464546e0b48ab004900904090c05911206120e",
+       "vale": "0000111111111111111111111111111111111111",
+       "deslocamento": 16
+      }
+     ],
+     "amostra": {
+      "bytes": "f0b557464e464546e0b48ab004900904090c05911206120e002081468020c000814201d10020e8e1124c206812490840",
+      "vale": "111111111111111111111111111111111111111101110111"
+     }
+    },
+    "battleMons": {
+     "referencia": 33702020,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "f872002391462348804610322248",
+       "vale": "11111101111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "00239146204fb8464c4610341f48",
+       "vale": "11110111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "b2467f2849d000254e4658244b4a",
+       "vale": "11111111111111",
+       "ldr": 12
+      }
+     ]
+    },
+    "battleOutcome": {
+     "referencia": 33702714,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "82460904090c324a102010703248",
+       "vale": "11111101111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "0047005e00030160000000b50448",
+       "vale": "11111111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "49040840002817d04df1fdff0006002812d00c4a0d49",
+       "vale": "1111111100001111110111",
+       "ldr": 20
+      }
+     ]
+    },
+    "battleReplenish": {
+     "referencia": 134448160,
+     "codigo": true,
+     "assinaturas": [
+      {
+       "tipo": "codigo",
+       "bytes": "f19e030821840308ec2f0202ca8b030200b581b0cef7ccfacef7f0faccf7a4f969f0f4fa70f06afe",
+       "vale": "1111111111111111111100000000000000000000",
+       "deslocamento": 16
+      },
+      {
+       "tipo": "literal",
+       "bytes": "0a4a0a49086810600a4808600a48",
+       "vale": "01011111011111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "0c4a0c49086810600c4808600c48",
+       "vale": "01011111011111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "0f4a0f49086810600f4808600f48",
+       "vale": "01011111011111",
+       "ldr": 12
+      }
+     ],
+     "amostra": {
+      "bytes": "00b581b0cef7ccfacef7f0faccf7a4f969f0f4fa70f06afe1348818d0220084000281ed0114800688021490408400028",
+      "vale": "111100000000000000000000011111111111011111111111"
+     }
+    },
+    "battleSkipRoutine": {
+     "referencia": 134670952,
+     "codigo": true,
+     "assinaturas": [
+      {
+       "tipo": "codigo",
+       "bytes": "043201310829f4dd002002bc08470000f0b5474680b41f4800681f490840002800d089e000f0a6fd",
+       "vale": "1111111111111111111111011101111111110000",
+       "deslocamento": 16
+      }
+     ],
+     "amostra": {
+      "bytes": "f0b5474680b41f4800681f490840002800d089e000f0a6fd0004000c642179f2abf80004060c19480b210022fbf740fd",
+      "vale": "111111011101111111110000111111000011110111110000"
+     }
+    },
+    "battleTypeFlags": {
+     "referencia": 33697772,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "6018017802200840002805d01148",
+       "vale": "11111111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "89e10000c0220003143000030748",
+       "vale": "11111111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "013301319142f7db93420fd10a4a",
+       "vale": "11111111111111",
+       "ldr": 12
+      }
+     ]
+    },
+    "battlerPartyIndexes": {
+     "referencia": 33701998,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "86f15dfa0220012186f159fa0320012186f155fa0948",
+       "vale": "0000111100001111000011",
+       "ldr": 20
+      },
+      {
+       "tipo": "literal",
+       "bytes": "86f183f90220012186f17ff90320012186f17bf90b48",
+       "vale": "0000111100001111000011",
+       "ldr": 20
+      },
+      {
+       "tipo": "literal",
+       "bytes": "002082460a498c46271c8046094e",
+       "vale": "11110111111111",
+       "ldr": 12
+      }
+     ]
+    },
+    "battlescriptPtr": {
+     "referencia": 33702420,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "2ae000003243020232480270324f",
+       "vale": "11111111011111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "207808800c4920780870002069f0b6f80a4908700a49",
+       "vale": "1111011111110000011111",
+       "ldr": 20
+      },
+      {
+       "tipo": "literal",
+       "bytes": "08201040002819d007480240002a15d021f096f80549",
+       "vale": "1111111101111111000011",
+       "ldr": 20
+      }
+     ]
+    },
+    "cb2EndWildBattle": {
+     "referencia": 134941432,
+     "codigo": true,
+     "assinaturas": [
+      {
+       "tipo": "codigo",
+       "bytes": "3ef0eef800f094fb01bc0047df01000000b581b0694600200880a021c9040e4a684636f2bbfa0020",
+       "vale": "0000000011111111111111111111110111000011",
+       "deslocamento": 16
+      },
+      {
+       "tipo": "literal",
+       "bytes": "01bc004700b500f07ff801bc0047000010b5e8f7c9fbe6f7e7fedbf715fb14491448",
+       "vale": "1111110000111111110000000000000111",
+       "ldr": 32
+      },
+      {
+       "tipo": "literal",
+       "bytes": "c0220003f90a0b08ec2f02020e40000000b5e8f791fbe6f7affedbf7ddfa0d490d48",
+       "vale": "1111111111111111110000000000000111",
+       "ldr": 32
+      },
+      {
+       "tipo": "literal",
+       "bytes": "01bc0047c022000391c10f08ec2f020200b5e8f74dfbe6f76bfedbf799fa0d490d48",
+       "vale": "1111111111111111110000000000000111",
+       "ldr": 32
+      }
+     ],
+     "amostra": {
+      "bytes": "00b581b0694600200880a021c9040e4a684636f2bbfa0020802156f71dfb0b48007800f0c5fb012814d1f9f08df90006",
+      "vale": "111111111111110111000011110000011100001111000011"
+     }
+    },
+    "cb2InitBattle": {
+     "referencia": 134440800,
+     "codigo": true,
+     "assinaturas": [
+      {
+       "tipo": "codigo",
+       "bytes": "fef7dcff00e00124201c10bc02bc084700b540f063fa20f0dffb26f0d5fc28f025fc4ff107fc0748",
+       "vale": "0000111111111111110000000000000000000011",
+       "deslocamento": 16
+      },
+      {
+       "tipo": "literal",
+       "bytes": "00fd0848c0221201111c01800748",
+       "vale": "11011111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "0138188600040014142802d10348",
+       "vale": "11111111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "0006000e01280bd1d5f77bfb0648",
+       "vale": "11111111000011",
+       "ldr": 12
+      }
+     ],
+     "amostra": {
+      "bytes": "00b540f063fa20f0dffb26f0d5fc28f025fc4ff107fc0748016840200840002824d0802040040840002805d000f022f8",
+      "vale": "110000000000000000000001111111111111111111110000"
+     }
+    },
+    "cb2Overworld": {
+     "referencia": 134766172,
+     "codigo": true,
+     "assinaturas": [
+      {
+       "tipo": "codigo",
+       "bytes": "0047000000b5fff7e7ff01bc0047000010b50948c079c009041c002c02d000207af740fcfff7d8ff",
+       "vale": "1111110000111111110111111111111100000000",
+       "deslocamento": 16
+      },
+      {
+       "tipo": "literal",
+       "bytes": "01bc0047000000b5054a51680548",
+       "vale": "11111111011111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "12f0a3ff094909480860094900200860094800f042fc00f028fa0748fff7a9ff0748",
+       "vale": "0000010111011111010000000001000011",
+       "ldr": 32
+      },
+      {
+       "tipo": "literal",
+       "bytes": "12f069ff0b490b480860694600200870684600f008fc00f0eef90748fff76fff0748",
+       "vale": "0000010111111111110000000001000011",
+       "ldr": 32
+      }
+     ],
+     "amostra": {
+      "bytes": "10b50948c079c009041c002c02d000207af740fcfff7d8ff002c01d000f082fa10bc01bc00470000d47f030201490860",
+      "vale": "110111111111111100000000111100001111111111110111"
+     }
+    },
+    "commandsTable": {
+     "referencia": 137477392,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "1203114318680840002806d12948",
+       "vale": "11111111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "2184030808480068002808d10749",
+       "vale": "11110111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "045d000307480068002808d10649",
+       "vale": "11110111111111",
+       "ldr": 12
+      }
+     ]
+    },
+    "controllerFuncs": {
+     "referencia": 50355552,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "254826490160002004900021244f",
+       "vale": "01011111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "0860802464041c40002c13d0064a",
+       "vale": "11111111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "605d00034d99180876400202144a",
+       "vale": "11111111111111",
+       "ldr": 12
+      }
+     ]
+    },
+    "ctrlActionInput": {
+     "referencia": 134575496,
+     "codigo": true,
+     "assinaturas": [
+      {
+       "tipo": "codigo",
+       "bytes": "0047000030060202e441020264400202f0b5134b134c20784202991c51180d780333d21811780902",
+       "vale": "1111111111111111110101111111111111111111",
+       "deslocamento": 16
+      }
+     ],
+     "amostra": {
+      "bytes": "f0b5134b134c20784202991c51180d780333d218117809020d43012107220123e2f73efb2078002107220123e2f738fb",
+      "vale": "110101111111111111111111111111110000111111110000"
+     }
+    },
+    "ctrlMoveInput": {
+     "referencia": 134577148,
+     "codigo": true,
+     "assinaturas": [
+      {
+       "tipo": "codigo",
+       "bytes": "745d000330060202e4410202d99a0308f0b5474680b4002080460a4b1878400209494618094a918d",
+       "vale": "1111111111111111111111111101111101110111",
+       "deslocamento": 16
+      },
+      {
+       "tipo": "literal",
+       "bytes": "01601049104c2078800040180f49",
+       "vale": "11010111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "02fc13490b4a1078800040181249",
+       "vale": "11010111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "207840180078002101f081fb09492078800040180849",
+       "vale": "1111111100000111111111",
+       "ldr": 20
+      }
+     ],
+     "amostra": {
+      "bytes": "f0b5474680b4002080460a4b1878400209494618094a918df02008401f1c002812d007480068c07c02280dd105490878",
+      "vale": "111111111101111101110111111111111101111111110111"
+     }
+    },
+    "ctrlRunCommand": {
+     "referencia": 134575364,
+     "codigo": true,
+     "assinaturas": [
+      {
+       "tipo": "codigo",
+       "bytes": "10bc01bc004700006840020228a3320800b50c4a0c490d48037898004018116800680140002919d0",
+       "vale": "1111111111111111110101011111111111111111",
+       "deslocamento": 16
+      },
+      {
+       "tipo": "literal",
+       "bytes": "0000064907480078800040180649",
+       "vale": "11010111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "0202cc44020210b581b00e490f4c2078800040180e49",
+       "vale": "1111111111010111111111",
+       "ldr": 20
+      }
+     ],
+     "amostra": {
+      "bytes": "00b50c4a0c490d48037898004018116800680140002919d00948590209180878382811d8074809788900091808688ff2",
+      "vale": "110101011111111111111111011111111111011111111111"
+     }
+    },
+    "ctrlTargetInput": {
+     "referencia": 134576164,
+     "codigo": true,
+     "assinaturas": [
+      {
+       "tipo": "codigo",
+       "bytes": "0047000064400202605d00032578050830b581b016496846042291f2d1fd1548007801210f220123",
+       "vale": "1111111111111111111101111100000111111111",
+       "deslocamento": 16
+      },
+      {
+       "tipo": "literal",
+       "bytes": "e2f7a6fa20780021e2f7a2fa05492078800040180449",
+       "vale": "0000111100000111111111",
+       "ldr": 20
+      },
+      {
+       "tipo": "literal",
+       "bytes": "6440020206493878800040180549",
+       "vale": "11110111111111",
+       "ldr": 12
+      }
+     ],
+     "amostra": {
+      "bytes": "30b581b016496846042291f2d1fd1548007801210f220123e2f7f4f900241248007800280dd00f480078844204d02006",
+      "vale": "111101111100000111111111000011011111110111111111"
+     }
+    },
+    "encounterKindHook": {
+     "referencia": 134958924,
+     "codigo": true,
+     "assinaturas": [
+      {
+       "tipo": "codigo",
+       "bytes": "b2f7a8ff03b0f0bc01bc00474447020270b581b0051c09060b0e1c1c1206160e002168460170012b",
+       "vale": "0000111111111111111111111111111111111111",
+       "deslocamento": 16
+      }
+     ],
+     "amostra": {
+      "bytes": "70b581b0051c09060b0e1c1c1206160e002168460170012b1cd0012b02dc002b03d024e0022c1ed021e0686808212a22",
+      "vale": "111111111111111111111111111111111111111111111111"
+     }
+    },
+    "enemyParty": {
+     "referencia": 33703748,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "000e032859d1f6f72efa011c0848",
+       "vale": "11111100001111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "f0bc02bc0847f0b50a20f9f79afb002464271c4e1d4d",
+       "vale": "1111111111000011110111",
+       "ldr": 20
+      },
+      {
+       "tipo": "literal",
+       "bytes": "ac42f9dd0f4c0025261c64360e49",
+       "vale": "11110111111111",
+       "ldr": 12
+      }
+     ]
+    },
+    "enemyPartyCount": {
+     "referencia": 33703146,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "02bc08470000ec44020210b50248",
+       "vale": "11111111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "0302f4de320800b5054889f7c6f80448002101600448",
+       "vale": "1111111101000001111111",
+       "ldr": 20
+      },
+      {
+       "tipo": "literal",
+       "bytes": "1068414909783630017010684049",
+       "vale": "11011111111111",
+       "ldr": 12
+      }
+     ]
+    },
+    "fishingHook": {
+     "referencia": 134959140,
+     "codigo": true,
+     "assinaturas": [
+      {
+       "tipo": "codigo",
+       "bytes": "211cfff727ff012001b070bc02bc084730b5051c0806000efff7d4fd041c2406a40d68680019fff7",
+       "vale": "1100001111111111111111110000111111111111",
+       "deslocamento": 16
+      }
+     ],
+     "amostra": {
+      "bytes": "30b5051c0806000efff7d4fd041c2406a40d68680019fff71bfe011c0906090e686820184088fff70dff686824186088",
+      "vale": "111111110000111111111100001111111111110000111111"
+     }
+    },
+    "gMain": {
+     "referencia": 50340544,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "14701a49fc231b01181c0880194f",
+       "vale": "11011111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "01d100f024f801bc004700b5094a",
+       "vale": "11000011111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "0202945d00030898020210b5074c",
+       "vale": "11111111111111",
+       "ldr": 12
+      }
+     ]
+    },
+    "itemEffect": {
+     "referencia": 134659332,
+     "codigo": true,
+     "assinaturas": [
+      {
+       "tipo": "codigo",
+       "bytes": "ff7ff0ff0ffeffffcc0332089c44020210b581b00904090c1206120e1b061b0e0024009400f006f8",
+       "vale": "1111111111111111111111111111111111110000",
+       "deslocamento": 16
+      }
+     ],
+     "amostra": {
+      "bytes": "10b581b00904090c1206120e1b061b0e0024009400f006f80006000e01b010bc02bc0847f0b557464e464546e0b491b0",
+      "vale": "111111111111111111110000111111111111111111111111"
+     }
+    },
+    "itemsTable": {
+     "referencia": 139999648,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "fff7efff0004000c2c2148430249",
+       "vale": "00001111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "0249401802bc08470000a039580810b50004000c064c",
+       "vale": "0111111111111111111111",
+       "ldr": 20
+      },
+      {
+       "tipo": "literal",
+       "bytes": "c08910bc02bc08470000a039580810b50004000c064c",
+       "vale": "1111111111111111111111",
+       "ldr": 20
+      }
+     ]
+    },
+    "party": {
+     "referencia": 33703148,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "2889013028816420391c41430348",
+       "vale": "11111111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "814219d100240ce0642060430849",
+       "vale": "11111111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "007884421fda0b4e642060430a49",
+       "vale": "11111101111111",
+       "ldr": 12
+      }
+     ]
+    },
+    "partyCount": {
+     "referencia": 33703145,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "011cce204000814223d001340448",
+       "vale": "11111111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "0000ec440202e944020200240c48",
+       "vale": "11111111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "0202cc033208ec44020201340448",
+       "vale": "11111111111111",
+       "ldr": 12
+      }
+     ]
+    },
+    "partyMenuHook": {
+     "referencia": 135518784,
+     "codigo": true,
+     "assinaturas": [
+      {
+       "tipo": "codigo",
+       "bytes": "01b0f0bc01bc0047d47f0302ec44020270b50c1c151c1e1c2404240c2d062d0e3606360e0a480021",
+       "vale": "1111111111111111111111111111111111110111",
+       "deslocamento": 16
+      }
+     ],
+     "amostra": {
+      "bytes": "70b50c1c151c1e1c2404240c2d062d0e3606360e0a4800216bf7aafa0006000e084a81000918c9008918002008818c81",
+      "vale": "111111111111111111110111000011110111111111111111"
+     }
+    },
+    "partyOtCheck": {
+     "referencia": 134670504,
+     "codigo": true,
+     "assinaturas": [
+      {
+       "tipo": "codigo",
+       "bytes": "0020085610bc02bc08470000a0255b0810b582b0041c07216a46fbf731fe201c01210022fbf72cfe",
+       "vale": "1111111111111111111111111100001111110000",
+       "deslocamento": 16
+      }
+     ],
+     "amostra": {
+      "bytes": "10b582b0041c07216a46fbf731fe201c01210022fbf72cfe694600f007f80006000e02b010bc02bc0847000030b50d1c",
+      "vale": "111111111100001111110000110000111111111111111111"
+     }
+    },
+    "readKeysR1": {
+     "referencia": 134219242,
+     "codigo": true,
+     "assinaturas": [
+      {
+       "tipo": "codigo",
+       "bytes": "0003b0220003c022000300b50e4801880e4a101c031c4b400d490a8d181c90434885c88508860a1c",
+       "vale": "1111111111110111011111110111111111111111",
+       "deslocamento": 16
+      }
+     ],
+     "amostra": {
+      "bytes": "0e4a101c031c4b400d490a8d181c90434885c88508860a1c002b14d0908d984211d1508e01385086000400280ed11386",
+      "vale": "011111110111111111111111111111111111111111111111"
+     }
+    },
+    "removeBagItem": {
+     "referencia": 135096996,
+     "codigo": true,
+     "assinaturas": [
+      {
+       "tipo": "codigo",
+       "bytes": "38bc9846a146aa46f0bc02bc08470000f0b54f464646c0b40004000c804609040f0c002400f06afd",
+       "vale": "1111111111111111111111111111111111110000",
+       "deslocamento": 16
+      }
+     ],
+     "amostra": {
+      "bytes": "f0b54f464646c0b40004000c804609040f0c002400f06afd000600283ad04046002837d0d3f0baf90006002806d10748",
+      "vale": "111111111111111111110000111111111111000011111111"
+     }
+    },
+    "rngValue": {
+     "referencia": 50355584,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "0006000e0019007800281bd10b49",
+       "vale": "11111111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "01380870000600280ed10a490a48",
+       "vale": "11111111110111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "fff7d6ff0004001402bc0847064a",
+       "vale": "00001111111111",
+       "ldr": 12
+      }
+     ]
+    },
+    "saveBlock1Ptr": {
+     "referencia": 50355596,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "00245046043807990b1819881648",
+       "vale": "11111111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "301cfff77bff3a68002a0bdb2a48",
+       "vale": "11000011111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "8efd0006000e8442d1db00241e49",
+       "vale": "11111111111111",
+       "ldr": 12
+      }
+     ]
+    },
+    "saveBlock2Ptr": {
+     "referencia": 50355600,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "094a002010620849086050621060074800f029f80749",
+       "vale": "0111110111111101000011",
+       "ldr": 20
+      },
+      {
+       "tipo": "literal",
+       "bytes": "0003124800885086138593851148",
+       "vale": "11011111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "0847000000487047ac2302020148",
+       "vale": "11110111111111",
+       "ldr": 12
+      }
+     ]
+    },
+    "storagePtr": {
+     "referencia": 50355604,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "0849086050621060074800f029f80749074808600749",
+       "vale": "0111111101000001011111",
+       "ldr": 20
+      },
+      {
+       "tipo": "literal",
+       "bytes": "0a48201808600948201828600949",
+       "vale": "01111101111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "72f2bcfb2b498a4609682b4f2b483a1c72f2b4fb2a48",
+       "vale": "0000011111010111000011",
+       "ldr": 20
+      }
+     ]
+    },
+    "target": {
+     "referencia": 33702412,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "c00040192427c15f206809183248",
+       "vale": "11111111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "285f434619684018807810700e4a",
+       "vale": "11111111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "013a002af3da0021204a11702048",
+       "vale": "11111111011111",
+       "ldr": 12
+      }
+     ]
+    },
+    "textController": {
+     "referencia": 134584244,
+     "codigo": true,
+     "assinaturas": [
+      {
+       "tipo": "codigo",
+       "bytes": "00470000d044020264400202e441020230060202705d000300b50020abf722f80004002801d1fdf763fe01bc0047000010b51048c17980200840002817d10e49",
+       "vale": "1111111111111111111111111111000011111100001111111101111111111111",
+       "deslocamento": 24
+      },
+      {
+       "tipo": "literal",
+       "bytes": "f2f094f80d480021f3f024fd0c492878800040180b49",
+       "vale": "0000011100000111111111",
+       "ldr": 20
+      }
+     ],
+     "amostra": {
+      "bytes": "00b50020abf722f80004002801d1fdf763fe01bc0047000010b51048c17980200840002817d10e490e4a107880004018",
+      "vale": "111100001111110000111111110111111111110101111111"
+     }
+    },
+    "wildHeaders": {
+     "referencia": 139799880,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "f0bc02bc0847000070b500241248",
+       "vale": "11111111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "d4f7c3f80006000e012846d12249",
+       "vale": "00001111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "fff738ff0006002800d194e01849",
+       "vale": "00001111111111",
+       "ldr": 12
+      }
+     ]
+    },
+    "controllersTable": {
+     "referencia": 137479444,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "relativo",
+       "base": "ctrlRunCommand",
+       "ldr_delta": 36
+      }
+     ]
+    }
+   },
+   "sem_assinatura": []
+  },
+  "RS": {
+   "referencia": [
+    "refer\u00eancia 1: 44 pontos"
+   ],
+   "ancoras": {
+    "absentFlags": {
+     "referencia": 33704972,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "40192427c05f2849401800192849",
+       "vale": "11111101111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "305f013280184019007808701049",
+       "vale": "11111111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "0570654960180570654a1570654b",
+       "vale": "11011111011111",
+       "ldr": 12
+      }
+     ]
+    },
+    "activeBattler": {
+     "referencia": 33704544,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "15d023e00023934220da064e074d",
+       "vale": "11111111110111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "604a0202002393420bda074e074d",
+       "vale": "01111111110111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "40192421405e424a801800194149",
+       "vale": "11111101111111",
+       "ldr": 12
+      }
+     ]
+    },
+    "attacker": {
+     "referencia": 33704967,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "40192427c05f3d49401800193d49",
+       "vale": "11111101111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "1748018804200840002851d11549",
+       "vale": "01111111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "0c330234013a002af3da0021774a",
+       "vale": "11111111111111",
+       "ldr": 12
+      }
+     ]
+    },
+    "battleBufferA": {
+     "referencia": 33700448,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "0420087038bc9846a146aa46f0bc01bc00470000684a",
+       "vale": "1111111111111111111111",
+       "ldr": 20
+      },
+      {
+       "tipo": "literal",
+       "bytes": "012d15d023e00023934220da064e",
+       "vale": "11111111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "11680068014000296cd160021b49",
+       "vale": "11111111111111",
+       "ldr": 12
+      }
+     ]
+    },
+    "battleBufferB": {
+     "referencia": 33702496,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "0202604a0202002393420bda074e",
+       "vale": "11011111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "02020c4c02020a4c020260020449",
+       "vale": "11011101111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "107878434946431800224b4e4c4d",
+       "vale": "11111111110111",
+       "ldr": 12
+      }
+     ]
+    },
+    "battleCloseParty": {
+     "referencia": 134397852,
+     "codigo": true,
+     "assinaturas": [
+      {
+       "tipo": "codigo",
+       "bytes": "30430003604a020215c002086d4e020210b581b00e490f4c2078800040180e4901600e4801880220",
+       "vale": "1111011111110111111101011111110111011111",
+       "deslocamento": 16
+      }
+     ],
+     "amostra": {
+      "bytes": "10b581b00e490f4c2078800040180e4901600e4801880220084000281ad0dbf74fff69460870022004216a46e0f712f8",
+      "vale": "111101011111110111011111111111000011111111110000"
+     }
+    },
+    "battleEnemyCount": {
+     "referencia": 134281448,
+     "codigo": true,
+     "assinaturas": [
+      {
+       "tipo": "codigo",
+       "bytes": "f0f778fd30bc01bc00470000c5e70008f0b557464e464546e0b489b004900904090c059100208146",
+       "vale": "0000111111111111111111111111111111111111",
+       "deslocamento": 16
+      }
+     ],
+     "amostra": {
+      "bytes": "f0b557464e464546e0b489b004900904090c0591002081468020c000814201d10020d3e10b4801880b48084005998900",
+      "vale": "111111111111111111111111111111111111011101111111"
+     }
+    },
+    "battleMons": {
+     "referencia": 33704576,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "d87200239146244fb84610322348",
+       "vale": "11111101111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "40400003264d0202e64b0202e84b0202044c0202064c",
+       "vale": "1111011101110111011111",
+       "ldr": 20
+      },
+      {
+       "tipo": "literal",
+       "bytes": "00239146214fb8464c4610342048",
+       "vale": "11110111111111",
+       "ldr": 12
+      }
+     ]
+    },
+    "battleOutcome": {
+     "referencia": 33705254,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "82460904090c334a102010703348",
+       "vale": "11111101111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "204b00030160000030b581b00548",
+       "vale": "01111111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "6d4c1a19002110706c4801706c4a",
+       "vale": "01111111011111",
+       "ldr": 12
+      }
+     ]
+    },
+    "battleReplenish": {
+     "referencia": 134281224,
+     "codigo": true,
+     "assinaturas": [
+      {
+       "tipo": "codigo",
+       "bytes": "2508010809f80008f83902025eff020200b5f0f7c3fff0f7e7ff0448f3f79aff64f090f96bf0e2f9",
+       "vale": "1111111111111111110000000001000000000000",
+       "deslocamento": 16
+      },
+      {
+       "tipo": "literal",
+       "bytes": "0e4a0e49086810600e4808600e48",
+       "vale": "01011111011111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "0f4a0f49086810600f4808600f48",
+       "vale": "01011111011111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "032060f0affb052060f0e8ff04490548086005490548",
+       "vale": "1100001100000101110111",
+       "ldr": 20
+      }
+     ],
+     "amostra": {
+      "bytes": "00b5f0f7c3fff0f7e7ff0448f3f79aff64f090f96bf0e2f901bc0047104200030021c1850149c1617047000039f80008",
+      "vale": "110000000001000000000000111111111111011111111111"
+     }
+    },
+    "battleSkipRoutine": {
+     "referencia": 134483000,
+     "codigo": true,
+     "assinaturas": [
+      {
+       "tipo": "codigo",
+       "bytes": "904200036c4e0202cafc3f08cc34020230b51548018815480840002832d100f01df90004000c6421",
+       "vale": "1111011111111111110111011111110000111111",
+       "deslocamento": 16
+      }
+     ],
+     "amostra": {
+      "bytes": "30b51548018815480840002832d100f01df90004000c6421a0f15af90004050c0f4c201c0b210022fbf77eff0004000c",
+      "vale": "110111011111110000111111000011110111111100001111"
+     }
+    },
+    "battleTypeFlags": {
+     "referencia": 33700344,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "002807d1012105e09a8603020348",
+       "vale": "11111111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "013301319142f7db93420ed1094a",
+       "vale": "11111111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "1c3401329a42f3db99420ed10b4a",
+       "vale": "11111111111111",
+       "ldr": 12
+      }
+     ]
+    },
+    "battlerPartyIndexes": {
+     "referencia": 33704554,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "002082460a498c460a4f80460a4e",
+       "vale": "11110111011111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "201c2d2130f0c0fe002847d10248",
+       "vale": "11110000111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "201c2d2130f088fe00280fd10649",
+       "vale": "11110000111111",
+       "ldr": 12
+      }
+     ]
+    },
+    "battlescriptPtr": {
+     "referencia": 33704976,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "1e4d02029460010014480170144f",
+       "vale": "01111111011111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "000000021d600100684a0202604a",
+       "vale": "11111111011111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "08700c4801880220084000281fd00a490b4c20780870002064f03fff0949087009490948086021787f2008402070bce00000",
+       "vale": "11011111111111010111111100000111010111111111111111",
+       "ldr": 32
+      }
+     ]
+    },
+    "cb2EndWildBattle": {
+     "referencia": 134749324,
+     "codigo": true,
+     "assinaturas": [
+      {
+       "tipo": "codigo",
+       "bytes": "01bc004770170003ed1c0808f839020200b581b0694600200880a021c904094a68465ef1a5fd0020",
+       "vale": "1111111111111111111111111111110111000011",
+       "deslocamento": 16
+      },
+      {
+       "tipo": "literal",
+       "bytes": "02d000f04bf801e000f002f801bc004700b5e3f789fde2f709fdd7f7e7fe0a490a48",
+       "vale": "1100001100001111110000000000000111",
+       "ldr": 32
+      },
+      {
+       "tipo": "literal",
+       "bytes": "01bc0047701700038d1c0808f839020200b5e3f767fde2f7e7fcd7f7c5fe0b490b48",
+       "vale": "1111111111111111110000000000000111",
+       "ldr": 32
+      }
+     ],
+     "amostra": {
+      "bytes": "00b581b0694600200880a021c904094a68465ef1a5fd002080217ff747f90648007800f0e5fa01280ad104487ef788fb",
+      "vale": "111111111111110111000011110000011100001111010000"
+     }
+    },
+    "cb2InitBattle": {
+     "referencia": 134277060,
+     "codigo": true,
+     "assinaturas": [
+      {
+       "tipo": "codigo",
+       "bytes": "fef7caff00e00124201c10bc02bc084700b5074801884020084000280ed0fdf741f80448f1f7f8fd",
+       "vale": "0000111111111111110111111111110000010000",
+       "deslocamento": 16
+      },
+      {
+       "tipo": "literal",
+       "bytes": "0138188600040014142802d10348",
+       "vale": "11111111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "99f0a5f80006000e012809d10648",
+       "vale": "00001111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "0a491020088009490a4888600a48",
+       "vale": "01111101011111",
+       "ldr": 12
+      }
+     ],
+     "amostra": {
+      "bytes": "00b5074801884020084000280ed0fdf741f80448f1f7f8fd03490020087007e0f839020205f100081e4d020200f002f8",
+      "vale": "110111111111110000010000011111111111111101110000"
+     }
+    },
+    "cb2Overworld": {
+     "referencia": 134562724,
+     "codigo": true,
+     "assinaturas": [
+      {
+       "tipo": "codigo",
+       "bytes": "0047000000b5fff7e9ff01bc0047000010b50948c079c009041c002c02d00020acf7c4f8fff7daff",
+       "vale": "1111110000111111110111111111111100000000",
+       "deslocamento": 16
+      },
+      {
+       "tipo": "literal",
+       "bytes": "01bc0047000000b5054a51680548",
+       "vale": "11111111011111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "0ffc11f093f811f085f8084908480860084800f0a9fb00f0d1f90748fff7c4ff0648",
+       "vale": "1100000000010111010000000001000011",
+       "ldr": 32
+      },
+      {
+       "tipo": "literal",
+       "bytes": "11f050f80b490c480860694600200870684600f071fb00f099f90848fff78cff0748",
+       "vale": "0000010111111111110000000001000011",
+       "ldr": 32
+      }
+     ],
+     "amostra": {
+      "bytes": "10b50948c079c009041c002c02d00020acf7c4f8fff7daff002c01d000f010fa10bc01bc0047000088f3020201490860",
+      "vale": "110111111111111100000000111100001111111111110111"
+     }
+    },
+    "commandsTable": {
+     "referencia": 136292156,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "1203114318680840002806d10b48",
+       "vale": "11111111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "09f8000807480068002808d10649",
+       "vale": "11110111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "d442000307480068002808d10649",
+       "vale": "11110111111111",
+       "ldr": 12
+      }
+     ]
+    },
+    "controllerFuncs": {
+     "referencia": 50348848,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "254826490160002004900021244f",
+       "vale": "01011111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "064808608020104000280dd00449",
+       "vale": "01111111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "1208802080001040002806d00149",
+       "vale": "11111111111111",
+       "ldr": 12
+      }
+     ]
+    },
+    "ctrlActionInput": {
+     "referencia": 134398104,
+     "codigo": true,
+     "assinaturas": [
+      {
+       "tipo": "codigo",
+       "bytes": "0047000004000202e04b0202604a0202f0b5474680b4174f174c20784202b91c51180d78f91c5218",
+       "vale": "1111111101110111111111010111111111111111",
+       "deslocamento": 16
+      },
+      {
+       "tipo": "literal",
+       "bytes": "d1f9224922480078800040182149",
+       "vale": "11010111111111",
+       "ldr": 12
+      }
+     ],
+     "amostra": {
+      "bytes": "f0b5474680b4174f174c20784202b91c51180d78f91c5218117809020d43012107220123e4f7aafa2078002107220123",
+      "vale": "111111010111111111111111111111111111000011111111"
+     }
+    },
+    "ctrlMoveInput": {
+     "referencia": 134399628,
+     "codigo": true,
+     "assinaturas": [
+      {
+       "tipo": "codigo",
+       "bytes": "4443000304000202e04b020221050108f0b5474680b482b000208046124f3a785002124946181248",
+       "vale": "1111111101111111111111111111011111011111",
+       "deslocamento": 16
+      },
+      {
+       "tipo": "literal",
+       "bytes": "01600f49104c2078800040180f49",
+       "vale": "11010111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "88f94149424a1078800040184149",
+       "vale": "11010111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "2078401900781d4901f03ff91d492078800040181d49",
+       "vale": "1111110100000111111111",
+       "ldr": 20
+      }
+     ],
+     "amostra": {
+      "bytes": "f0b5474680b482b000208046124f3a785002124946181248c18d01252c1c0c40002c00d1d8e0052048f0eefe0d493878",
+      "vale": "111111111111011111011101111111111111111100000111"
+     }
+    },
+    "ctrlRunCommand": {
+     "referencia": 134397972,
+     "codigo": true,
+     "assinaturas": [
+      {
+       "tipo": "codigo",
+       "bytes": "10bc01bc00470000644a02022c87200800b50c4a0c490d48037898004018116800680140002919d0",
+       "vale": "1111111101111111110101011111111111111111",
+       "deslocamento": 16
+      },
+      {
+       "tipo": "literal",
+       "bytes": "0000054906480078800040180549",
+       "vale": "11010111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "0130087053e0000088f302026a4a",
+       "vale": "11111111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "02086d4e020210b581b00e490f4c2078800040180e49",
+       "vale": "1101111111010111111111",
+       "ldr": 20
+      }
+     ],
+     "amostra": {
+      "bytes": "00b50c4a0c490d48037898004018116800680140002919d00948590209180878382811d807480978890009180868b4f1",
+      "vale": "110101011111111111111111011111111111011111111111"
+     }
+    },
+    "ctrlTargetInput": {
+     "referencia": 134398700,
+     "codigo": true,
+     "assinaturas": [
+      {
+       "tipo": "codigo",
+       "bytes": "00470000604a020230430003edc2020830b581b0244968460422b6f101fa2348007801210f220123",
+       "vale": "1111011111111111111101111100000111111111",
+       "deslocamento": 16
+      },
+      {
+       "tipo": "literal",
+       "bytes": "e4f728fa20780021e4f724fa05492078800040180449",
+       "vale": "0000111100000111111111",
+       "ldr": 20
+      },
+      {
+       "tipo": "literal",
+       "bytes": "01b030bc01bc0047604a02026a4a020260430003644e",
+       "vale": "1111111101110111111111",
+       "ldr": 20
+      },
+      {
+       "tipo": "literal",
+       "bytes": "02020649074a1078800040180649",
+       "vale": "11010111111111",
+       "ldr": 12
+      }
+     ],
+     "amostra": {
+      "bytes": "30b581b0244968460422b6f101fa2348007801210f220123e4f786f900242048007800280dd01d480078844204d02006",
+      "vale": "111101111100000111111111000011011111110111111111"
+     }
+    },
+    "encounterKindHook": {
+     "referencia": 134762160,
+     "codigo": true,
+     "assinaturas": [
+      {
+       "tipo": "codigo",
+       "bytes": "b5f71cfe01b030bc01bc0047c0450003f0b5061c0906090e0b1c1206170e002001290ad0012902dc",
+       "vale": "0000111111111111111111111111111111111111",
+       "deslocamento": 16
+      }
+     ],
+     "amostra": {
+      "bytes": "f0b5061c0906090e0b1c1206170e002001290ad0012902dc002903d009e0022b03d006e0fff756fe01e0fff7b1fe0006",
+      "vale": "111111111111111111111111111111111111000011000011"
+     }
+    },
+    "enemyParty": {
+     "referencia": 50349504,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "10200840002813d02ef047ff164c",
+       "vale": "11111111000011",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "05e00000724a0202604300030f48",
+       "vale": "11110111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "201c0b210ce00000604300031348",
+       "vale": "11111111111111",
+       "ldr": 12
+      }
+     ]
+    },
+    "enemyPartyCount": {
+     "referencia": 50349496,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "02bc084700006043000310b50248",
+       "vale": "11111111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "20683f4909784230017020683e49",
+       "vale": "11011111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "2068444909784230017020684349",
+       "vale": "11011111111111",
+       "ldr": 12
+      }
+     ]
+    },
+    "fishingHook": {
+     "referencia": 134762264,
+     "codigo": true,
+     "assinaturas": [
+      {
+       "tipo": "codigo",
+       "bytes": "4088291cfff7b4ff0120f0bc02bc084730b5051c0806000efff7b8fe041c2406a40d68680019fff7",
+       "vale": "1111000011111111111111110000111111111111",
+       "deslocamento": 16
+      }
+     ],
+     "amostra": {
+      "bytes": "30b5051c0806000efff7b8fe041c2406a40d68680019fff7fffe011c0906090e686820184088fff79bff686824186088",
+      "vale": "111111110000111111111100001111111111110000111111"
+     }
+    },
+    "gMain": {
+     "referencia": 50337648,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "04701a480068012802d0002000f09cf817480470174d",
+       "vale": "1101111111110000011111",
+       "ldr": 20
+      },
+      {
+       "tipo": "literal",
+       "bytes": "0003602a00039c17000300b50548",
+       "vale": "11111111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "00007017000345ba130810b5074c",
+       "vale": "11111111111111",
+       "ldr": 12
+      }
+     ]
+    },
+    "itemEffect": {
+     "referencia": 134472076,
+     "codigo": true,
+     "assinaturas": [
+      {
+       "tipo": "codigo",
+       "bytes": "ff7ff0ff0ffeffff18ec1f08bc60010210b581b00904090c1206120e1b061b0e0024009400f006f8",
+       "vale": "1111111111111111111111111111111111110000",
+       "deslocamento": 16
+      }
+     ],
+     "amostra": {
+      "bytes": "10b581b00904090c1206120e1b061b0e0024009400f006f80006000e01b010bc02bc0847f0b557464e464546e0b48fb0",
+      "vale": "111111111111111111110000111111111111111111111111"
+     }
+    },
+    "itemsTable": {
+     "referencia": 138171748,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "fff7efff0004000c2c2148430249",
+       "vale": "00001111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "0249401802bc0847000064553c0810b50004000c064c",
+       "vale": "0111111111111111111111",
+       "ldr": 20
+      },
+      {
+       "tipo": "literal",
+       "bytes": "c08910bc02bc0847000064553c0810b50004000c064c",
+       "vale": "1111111111111111111111",
+       "ldr": 20
+      }
+     ]
+    },
+    "party": {
+     "referencia": 50348896,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "d44200030108010870290003724a",
+       "vale": "11111111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "4846017801200840002806d10248",
+       "vale": "11111111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "484601780120084000280dd10548",
+       "vale": "11111111111111",
+       "ldr": 12
+      }
+     ]
+    },
+    "partyCount": {
+     "referencia": 50348880,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "00d00ee10b480b4aa91809780b4a",
+       "vale": "11110101111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "f0d1201c311c6422fff7ceff0349",
+       "vale": "11111111000011",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "9846a146f0bc02bc084710b50248",
+       "vale": "11111111111111",
+       "ldr": 12
+      }
+     ]
+    },
+    "partyMenuHook": {
+     "referencia": 135338276,
+     "codigo": true,
+     "assinaturas": [
+      {
+       "tipo": "codigo",
+       "bytes": "00f036f801b0f0bc01bc004788f3020270b5464640b480460c1c151c1e1c2404240c2d062d0e3606",
+       "vale": "0000111111111111111111111111111111111111",
+       "deslocamento": 16
+      }
+     ],
+     "amostra": {
+      "bytes": "70b5464640b480460c1c151c1e1c2404240c2d062d0e3606360e0e48002169f7a1f80006000e0c4a81000918c9008918",
+      "vale": "111111111111111111111111110111000011110111111111"
+     }
+    },
+    "partyOtCheck": {
+     "referencia": 134482596,
+     "codigo": true,
+     "assinaturas": [
+      {
+       "tipo": "codigo",
+       "bytes": "0020085610bc02bc08470000287e3f0810b582b0041c07216a46fcf757f8201c01210022fcf752f8",
+       "vale": "1111111111111111111111111100001111110000",
+       "deslocamento": 16
+      }
+     ],
+     "amostra": {
+      "bytes": "10b582b0041c07216a46fcf757f8201c01210022fcf752f8694600f007f80006000e02b010bc02bc0847000030b50d1c",
+      "vale": "111111111100001111110000110000111111111111111111"
+     }
+    },
+    "readKeysR1": {
+     "referencia": 134218798,
+     "codigo": true,
+     "assinaturas": [
+      {
+       "tipo": "codigo",
+       "bytes": "0003601700037017000300b501b40048004701806d0801bc0d490a8d181c90434885c88508860a1c",
+       "vale": "1111111111111101111111110111111111111111",
+       "deslocamento": 16
+      }
+     ],
+     "amostra": {
+      "bytes": "004701806d0801bc0d490a8d181c90434885c88508860a1c002b14d0908d984211d1508e01385086000400280ed11386",
+      "vale": "111111110111111111111111111111111111111111111111"
+     }
+    },
+    "removeBagItem": {
+     "referencia": 134911288,
+     "codigo": true,
+     "assinaturas": [
+      {
+       "tipo": "codigo",
+       "bytes": "40b018bc9846a146f0bc02bc08470000f0b5474680b40004060c09040c0c0027301c00f081fa0006",
+       "vale": "1111111111111111111111111111111111000011",
+       "deslocamento": 16
+      }
+     ],
+     "amostra": {
+      "bytes": "f0b5474680b40004060c09040c0c0027301c00f081fa0006002824d0002e22d0301c00f079fa01380006000e84460025",
+      "vale": "111111111111111111000011111111111100001111111111"
+     }
+    },
+    "rngValue": {
+     "referencia": 50350104,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "fff7d6ff0004001402bc0847044a",
+       "vale": "00001111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "6d4ec641736000000004000c0149",
+       "vale": "01111111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "88004018c0004019064901600649",
+       "vale": "11111111011111",
+       "ldr": 12
+      }
+     ]
+    },
+    "saveBlock1": {
+     "referencia": 33707828,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "00030000000270b5114c0022114e",
+       "vale": "11111111011111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "02200840002842d10023194d1a48",
+       "vale": "11111111110111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "1cf095fc0004000caf2816d10948",
+       "vale": "00001111111111",
+       "ldr": 12
+      }
+     ]
+    },
+    "saveBlock2": {
+     "referencia": 33705636,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "0003114800885086138593851048",
+       "vale": "11011111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "00006003000300b500f013f8000600280bd003490448",
+       "vale": "1111111100001111110111",
+       "ldr": 20
+      },
+      {
+       "tipo": "literal",
+       "bytes": "0847000000487047002900030048",
+       "vale": "11110111111111",
+       "ldr": 12
+      }
+     ]
+    },
+    "storage": {
+     "referencia": 33751200,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "f0b54f464646c0b481b081461048",
+       "vale": "11111111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "72f751f970bc01bc004700b50349",
+       "vale": "00001111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "a0000302d083000000b5011c0248",
+       "vale": "11111111111111",
+       "ldr": 12
+      }
+     ]
+    },
+    "target": {
+     "referencia": 33704968,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "40192422805e394fc01900193849",
+       "vale": "11111101111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "305f154a80184019007808701349",
+       "vale": "11011111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "013a002af3da0021774a1170774b",
+       "vale": "11111111011111",
+       "ldr": 12
+      }
+     ]
+    },
+    "textController": {
+     "referencia": 134405912,
+     "codigo": true,
+     "assinaturas": [
+      {
+       "tipo": "codigo",
+       "bytes": "00470000604a020210780102e04b0202040002024043000300b50448c08a002801d1fef73bf801bc004700001042000310b50f48c17980200840002815d10d49",
+       "vale": "1111011111110111111111111101111111000011111111111101111111111111",
+       "deslocamento": 24
+      }
+     ],
+     "amostra": {
+      "bytes": "00b50448c08a002801d1fef73bf801bc004700001042000310b50f48c17980200840002815d10d490d4a107880004018",
+      "vale": "110111111100001111111111110111111111110101111111"
+     }
+    },
+    "wildHeaders": {
+     "referencia": 138007636,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "literal",
+       "bytes": "30bc02bc0847000070b500230a4d",
+       "vale": "11111111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "d2f796f90006000e012849d12349",
+       "vale": "00001111111111",
+       "ldr": 12
+      },
+      {
+       "tipo": "literal",
+       "bytes": "fff7bfff0006002800d18be01a49",
+       "vale": "00001111111111",
+       "ldr": 12
+      }
+     ]
+    },
+    "controllersTable": {
+     "referencia": 136293784,
+     "codigo": false,
+     "assinaturas": [
+      {
+       "tipo": "relativo",
+       "base": "ctrlRunCommand",
+       "ldr_delta": 36
+      }
+     ]
+    }
+   },
+   "sem_assinatura": []
+  }
+ }
+}
